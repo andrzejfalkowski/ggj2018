@@ -29,17 +29,17 @@ public class AnimatedCharacter : MonoBehaviour
         RIGHT
     }
 
-	// Use this for initialization
-	public void HandleMovement (Vector2 target) 
+
+	public void SetMoveTarget (Vector2 target) 
     {
         currentTarget = target;
 	}
 	
-	void Update () 
+	private void Update () 
     {
         if (!overrideAnimation)
         {
-            if (Mathf.Abs(((Vector2)this.gameObject.transform.localPosition - currentTarget).sqrMagnitude) < idleTreshold)
+            if (Mathf.Abs(((Vector2)transform.parent.localPosition - currentTarget).sqrMagnitude) < idleTreshold)
             {
                 CurrentState = EState.IDLE;
             }
@@ -48,7 +48,7 @@ public class AnimatedCharacter : MonoBehaviour
                 CurrentState = EState.MOVE;
             }
 
-            if (this.gameObject.transform.localPosition.x < currentTarget.x)
+            if (transform.parent.localPosition.x < currentTarget.x)
             {
                 CurrentDirection = EDirection.LEFT;
             }
@@ -61,6 +61,11 @@ public class AnimatedCharacter : MonoBehaviour
         animator.SetInteger("State", (int)CurrentState);
 
         animator.gameObject.transform.localScale = 
-            new Vector3(CurrentDirection == EDirection.LEFT ? -1f: 1f, animator.gameObject.transform.localScale.y, 1f);
+            new Vector3(CurrentDirection == EDirection.RIGHT ? -1f: 1f, animator.gameObject.transform.localScale.y, 1f);
 	}
+
+    private void LateUpdate()
+    {
+        transform.rotation = Quaternion.identity;
+    }
 }

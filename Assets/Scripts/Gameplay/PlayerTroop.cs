@@ -12,6 +12,7 @@ public class PlayerTroop
 
     private Transform transform;
     private NavMeshAgent navAgent;
+    private AnimatedCharacter animation;
 
     public PlayerTroop(GameObject _go, int _index, Vector2 _position)
     {
@@ -22,10 +23,13 @@ public class PlayerTroop
         transform.localPosition = Position;
         navAgent = TroopGO.GetComponent<NavMeshAgent>();
         navAgent.destination = Position;
+        animation = TroopGO.GetComponentInChildren<AnimatedCharacter>();
+        animation.SetMoveTarget(Position);
     }
 
     public void UpdatePosition(Vector2 target)
     {
         navAgent.destination = target;
+        animation.SetMoveTarget(target);
     }
 }

@@ -2,15 +2,15 @@ using UnityEngine;
 using UnityEngine.AI;
 
 // Use physics raycast hit from mouse click to set agent destination
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(PlayerSquad))]
 public class ClickToMove : MonoBehaviour
 {
-    NavMeshAgent m_Agent;
+    PlayerSquad squad;
     RaycastHit m_HitInfo = new RaycastHit();
 
     void Start()
     {
-        m_Agent = GetComponent<NavMeshAgent>();
+        squad = GetComponent<PlayerSquad>();
     }
 
     void Update()
@@ -19,7 +19,7 @@ public class ClickToMove : MonoBehaviour
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray.origin, ray.direction, out m_HitInfo))
-                m_Agent.destination = m_HitInfo.point;
+                squad.UpgadeTarget(m_HitInfo.point);
         }
     }
 }

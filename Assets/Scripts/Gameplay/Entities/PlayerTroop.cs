@@ -34,7 +34,7 @@ public class PlayerTroop : BaseBeing
     {
         if (navAgent != null)
         {
-            navAgent.destination = target;
+            navAgent.SetDestination(target);
             animation.SetMoveTarget(target);
         }
     }

@@ -24,14 +24,14 @@ public class PlayerTroop : BaseBeing
         Index = _index;
         IsInfected = false;
         IsDead = false;
+        animation = TroopGO.GetComponentInChildren<AnimatedCharacter>();
         transform = TroopGO.transform;
         transform.localPosition = _position;
         Health = new HealthComponent(playerTroopHealth, TroopGO.GetComponentInChildren<BloodParticles>(), 
                                      TroopGO.GetComponentInChildren<HealthBar>());
-        Attack = new AttackComponent(playerDamage, playerRange, playerCooldown);
+        Attack = new AttackComponent(playerDamage, playerRange, playerCooldown, animation);
         navAgent = TroopGO.GetComponent<NavMeshAgent>();
         navAgent.destination = Position;
-        animation = TroopGO.GetComponentInChildren<AnimatedCharacter>();
         animation.SetMoveTarget(Position);
     }
 

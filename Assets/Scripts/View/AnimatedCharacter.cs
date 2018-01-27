@@ -10,12 +10,15 @@ public class AnimatedCharacter : MonoBehaviour
     [SerializeField]
     private Animator animator;
     [SerializeField]
-    private SpriteRenderer spriteRenderer;
+    private Animator attackAnimator;
+    [SerializeField]
+    private List<SpriteRenderer> spriteRenderers;
 
     [SerializeField]
     private bool overrideAnimation = false;
 
     private Vector2 currentTarget = Vector2.zero;
+    private float defaultXScale = 1f;
 
     public EState CurrentState = EState.IDLE;
     public enum EState
@@ -24,6 +27,8 @@ public class AnimatedCharacter : MonoBehaviour
         MOVE
     }
 
+    public bool Attacking = false;
+
     public EDirection CurrentDirection = EDirection.LEFT;
     public enum EDirection
     {
@@ -31,6 +36,10 @@ public class AnimatedCharacter : MonoBehaviour
         RIGHT
     }
 
+    void Start()
+    {
+        defaultXScale = animator.gameObject.transform.localScale.x;
+    }
 
 	public void SetMoveTarget (Vector2 target) 
     {
@@ -39,9 +48,11 @@ public class AnimatedCharacter : MonoBehaviour
 
     public void ChangeSpriteColor(Color color)
     {
-        spriteRenderer.color = color;
+        for (int i = 0; i < spriteRenderers.Count; i++)
+        {
+            spriteRenderers[i].color = color;
+        }
     }
-
 
     private void Update () 
     {
@@ -69,8 +80,16 @@ public class AnimatedCharacter : MonoBehaviour
         animator.SetInteger("State", (int)CurrentState);
 
         animator.gameObject.transform.localScale = 
-            new Vector3(CurrentDirection == EDirection.RIGHT ? -1f: 1f, animator.gameObject.transform.localScale.y, 1f);
+            new Vector3(CurrentDirection == EDirection.RIGHT ? -defaultXScale : defaultXScale, animator.gameObject.transform.localScale.y, 1f);
 	}
+
+    public void AnimateAttack()
+    {
+        if (attackAnimator != null)
+        {
+            attackAnimator.Play("attack");
+        }
+    }
 
     private void LateUpdate()
     {

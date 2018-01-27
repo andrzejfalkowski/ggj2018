@@ -17,7 +17,7 @@ public class EnemyCreature : BaseBeing
     {
         EnemyGO = _go;
         Health = new HealthComponent(enemyTroopHealth, EnemyGO.GetComponentInChildren<BloodParticles>());
-        Attack = new AttackComponent(enemyDamage, enemyRange, enemyCooldown);
+        Attack = new AttackComponent(enemyDamage, enemyRange, enemyCooldown, null);
         transform = EnemyGO.transform;
         transform.localPosition = _position - (Vector2)transform.parent.position;
         navAgent = EnemyGO.GetComponent<NavMeshAgent>();

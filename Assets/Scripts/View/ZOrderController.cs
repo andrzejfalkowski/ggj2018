@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ZOrderController : MonoBehaviour 
 {
@@ -10,7 +11,8 @@ public class ZOrderController : MonoBehaviour
     private GameObject positionSurce = null;
 
     [SerializeField]
-    private SpriteRenderer spriteRenderer = null;
+    private List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
+    private List<int> spriteShifts = new List<int>();
 
     [SerializeField]
     private bool updateOnlyOnStart = false;
@@ -20,14 +22,19 @@ public class ZOrderController : MonoBehaviour
 
     void Start()
     {
-        if (spriteRenderer == null)
+        if (spriteRenderers.Count == 0)
         {
-            spriteRenderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
+            spriteRenderers = this.gameObject.GetComponentsInChildren<SpriteRenderer>().ToList();
         }
 
         if (positionSurce == null)
         {
             positionSurce = this.gameObject;
+        }
+
+        for (int i = 0; i < spriteRenderers.Count; i++)
+        {
+            spriteShifts.Add(spriteRenderers[i].sortingOrder);
         }
     }
 
@@ -35,8 +42,12 @@ public class ZOrderController : MonoBehaviour
     {
         if (!updateOnlyOnStart)
         {
-            spriteRenderer.sortingOrder = (int)Mathf.Clamp(GRANULARITY * -positionSurce.transform.localPosition.y + GRANULARITY * zShift, 
+            int order = (int)Mathf.Clamp(GRANULARITY * -positionSurce.transform.localPosition.y + GRANULARITY * zShift, 
                 short.MinValue, short.MaxValue);
+            for (int i = 0; i < spriteRenderers.Count; i++)
+            {
+                spriteRenderers[i].sortingOrder = order + spriteShifts[i];
+            }
         }
 	}
 }

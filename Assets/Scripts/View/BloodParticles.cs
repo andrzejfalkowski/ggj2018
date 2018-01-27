@@ -24,7 +24,7 @@ public class BloodParticles : MonoBehaviour
         //
         try
         {
-            if (gameObject != null && transform != null && linkedBeing != null && Particles != null)
+            if (this != null && gameObject != null && transform != null && linkedBeing != null && Particles != null)
             {
                 transform.position = linkedBeing.position + Vector3.back * 0.5f;
                 Particles.Emit(UnityEngine.Random.Range(minParticlesInEmission, maxParticlesInEmission));
@@ -36,7 +36,7 @@ public class BloodParticles : MonoBehaviour
         }
         catch(Exception ex)
         {
-            Debug.LogWarning("NullReference catched");
+            Debug.LogWarning("NullReference catched " + ex.Message);
         }
     }
 }

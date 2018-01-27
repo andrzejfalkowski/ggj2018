@@ -38,5 +38,5 @@ public class GameSettings : ScriptableObject
     [Space]
     public float maxEnemiesWavePeriodInS = 30;
     public float minEnemiesWavePeriodInS = 15;
-    public int periodDecreamentPerWave = 1;
+    public float periodDecreamentPerWave = 1;
 }

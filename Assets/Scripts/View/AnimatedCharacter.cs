@@ -41,7 +41,7 @@ public class AnimatedCharacter : MonoBehaviour
         MOVE
     }
 
-    public bool Attacking = false;
+    public BaseBeing Owner;
 
     public EDirection CurrentDirection = EDirection.LEFT;
     public EDirection CurrentAttackDirection = EDirection.LEFT;
@@ -49,6 +49,11 @@ public class AnimatedCharacter : MonoBehaviour
     {
         LEFT,
         RIGHT
+    }
+
+    public void Init(BaseBeing _owner)
+    {
+        Owner = _owner;
     }
 
     void Start()

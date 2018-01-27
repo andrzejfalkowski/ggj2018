@@ -39,5 +39,7 @@ public abstract class BaseBeing
     }
 
     public virtual void Update()
-    {}
+    {
+        
+    }
 }

@@ -17,6 +17,7 @@ public class PlayerTroop : BaseBeing
         Health = new HealthComponent(this, properties.playerTroopHealth, GameObject.GetComponentInChildren<BloodParticles>(), 
                                      GameObject.GetComponentInChildren<HealthBar>());
         Attack = new AttackComponent(properties.playerDamage, properties.playerRange, properties.playerCooldown, animation);
+        animation.Init(this);
         animation.SetMoveTarget(Position);
     }
 
@@ -27,6 +28,8 @@ public class PlayerTroop : BaseBeing
             navAgent.SetDestination(target);
             animation.SetMoveTarget(target);
         }
+
+        SupplyManager.Instance.UpdateLastMovePoint(target);
     }
 
     public override bool IsAlive()

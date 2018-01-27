@@ -1567,7 +1567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollStrength: 0.25
   scrollDuration: 0.1
-  viewportBordersEnabled: 1
+  viewportBordersEnabled: 0
   viewportBorderTreshold: 0.01
 --- !u!81 &922342245
 AudioListener:
@@ -3017,6 +3017,7 @@ GameObject:
   - component: {fileID: 1475586668}
   - component: {fileID: 1475586667}
   - component: {fileID: 1475586666}
+  - component: {fileID: 1475586670}
   m_Layer: 0
   m_Name: GameRoot
   m_TagString: Untagged
@@ -3085,11 +3086,6 @@ MonoBehaviour:
   IngameHUD: {fileID: 744790069}
   SquadDisplay: {fileID: 376596988}
   ParticlesParent: {fileID: 1969068431}
-  playerTroops: 20
-  minEnemiesPerWave: 10
-  maxEnemiesPerWave: 25
-  enemiesWavePeriod: 5
-  enemiesIncreamentPerWave: 2
 --- !u!4 &1475586669
 Transform:
   m_ObjectHideFlags: 0
@@ -3110,6 +3106,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1475586670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1475586665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca8391c8aa0598249a162cd4f1dff02d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnersParent: {fileID: 918851445}
 --- !u!1 &1556921079
 GameObject:
   m_ObjectHideFlags: 0

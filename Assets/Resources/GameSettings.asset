@@ -11,3 +11,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2db99c6b2f0c5940a2085ea5264a9fc, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
+  WeakZombi:
+    enemyTroopHealth: 100
+    enemyDamage: 5
+    enemyRange: 0.5
+    enemyCooldown: 0.2
+    enemyScoreValue: 1
+  Player:
+    playerTroopHealth: 100
+    playerDamage: 20
+    playerRange: 4
+    playerCooldown: 0.1
+  InfectionCooldown: 5
+  RectFormation_distanceBetweenTroops: 0.5
+  HordeFormation_distanceBetweenTroops: 0.3
+  HordeFormation_speadingFactor: 0.1
+  samplePositionRange: 3
+  healthBarVisibilityTime: 2
+  frontArmAnimLength: 0.1
+  frontArmRestoreIdleLength: 0.5
+  playerTroops: 20
+  minEnemiesFromSpawnerPerWave: 10
+  maxEnemiesFromSpawnerPerWave: 35
+  enemiesIncreamentPerWave: 2
+  minSpawnersInWave: 2
+  maxSpawnersInWave: 8
+  spawnersIncreamentPerWave: 1
+  maxEnemiesWavePeriodInS: 30
+  minEnemiesWavePeriodInS: 8
+  periodDecreamentPerWave: 1

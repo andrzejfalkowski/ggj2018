@@ -22,20 +22,7 @@ public class GameManager : MonoBehaviour
     private SquadDisplay SquadDisplay;
     public Transform ParticlesParent;
 
-    [Header("Parameters")]
-    [SerializeField]
-    private int playerTroops;
-    [SerializeField]
-    private int minEnemiesPerWave;
-    [SerializeField]
-    private int maxEnemiesPerWave;
-    [SerializeField]
-    private float enemiesWavePeriod;
-    [SerializeField]
-    private int enemiesIncreamentPerWave;
-
     private PlayerSquad playerSquad;
-    private List<EnemySpawn> enemySpawns;
 
     private float timeCounter;
 
@@ -44,8 +31,8 @@ public class GameManager : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
-            FindReferences();
-		}
+            playerSquad = FindObjectOfType<PlayerSquad>();
+        }
 		else
 		{
 			GameObject.Destroy(this.gameObject);
@@ -97,29 +84,15 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        for(int i = 0; i < enemySpawns.Count; i++)
-        {
-            Destroy(enemySpawns[i].gameObject);
-        }
+        SpawningManager.Instance.GameOver();
         IngameHUD.Show(timeCounter);
-    }
-
-    private void FindReferences()
-    {
-        playerSquad = FindObjectOfType<PlayerSquad>();
-        enemySpawns = new List<EnemySpawn>(FindObjectsOfType<EnemySpawn>());
     }
 
     private void InitializeGame()
     {
-        playerSquad.Init(playerTroops);
-        for(int i = 0; i < enemySpawns.Count; i++)
-        {
-            enemySpawns[i].Init(Random.Range(minEnemiesPerWave, maxEnemiesPerWave),
-                                enemiesWavePeriod, Random.Range(0, enemiesWavePeriod),
-                                enemiesIncreamentPerWave);
-        }
-        SquadDisplay.Init(playerTroops);
+        playerSquad.Init(SettingsService.GameSettings.playerTroops);
+        SquadDisplay.Init(SettingsService.GameSettings.playerTroops);
         SupplyManager.Instance.InitializeGame();
+        SpawningManager.Instance.InitializeGame();
     }
 }

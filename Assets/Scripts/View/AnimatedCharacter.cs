@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AnimatedCharacter : MonoBehaviour 
 {
@@ -11,6 +13,8 @@ public class AnimatedCharacter : MonoBehaviour
     private bool separateMoveAndAttackDirection = false;
     [SerializeField]
     private Transform separateAttackParent = null;
+    [SerializeField]
+    private Transform frontArmTransform;
 
     [SerializeField]
     private Animator animator;
@@ -27,6 +31,8 @@ public class AnimatedCharacter : MonoBehaviour
     [SerializeField]
     private Vector2 currentAttackTarget = Vector2.zero;
     private float defaultXScale = 1f;
+
+    private Tweener frontArmTween = null;
 
     public EState CurrentState = EState.IDLE;
     public enum EState
@@ -110,8 +116,36 @@ public class AnimatedCharacter : MonoBehaviour
             new Vector3(CurrentDirection == EDirection.RIGHT ? -defaultXScale : defaultXScale, animator.gameObject.transform.localScale.y, 1f);
 	}
 
+    private void SetupFrontArmDirection()
+    {
+        if(frontArmTransform != null)
+        {
+            if(CurrentAttackDirection == EDirection.LEFT)
+            {
+                Vector2 offset = currentAttackTarget - (Vector2)transform.position;
+                float angle = Mathf.Cos(Mathf.Abs(offset.x)/offset.magnitude);
+                Quaternion endRot = Quaternion.Euler(0, 0, Mathf.Sign(offset.y) * angle * Mathf.Rad2Deg);
+                if(frontArmTween != null)
+                {
+                    frontArmTween.Kill();
+                }
+                frontArmTween = frontArmTransform.DOLocalRotateQuaternion(endRot, SettingsService.GameSettings.frontArmAnimLength)
+                                                 .OnComplete(()=>
+                {
+                    frontArmTween = frontArmTransform.DOLocalRotateQuaternion(Quaternion.identity, SettingsService.GameSettings.frontArmRestoreIdleLength)
+                                                     .SetDelay(SettingsService.GameSettings.frontArmAnimLength)
+                                                     .OnComplete(() =>
+                                                     {
+                                                         frontArmTween = null;
+                                                     });
+                });
+            }
+        }
+    }
+
     public void AnimateAttack(Vector2 target)
     {
+        SetupFrontArmDirection();
         if (attackAnimator != null)
         {
             attackAnimator.Play("attack");

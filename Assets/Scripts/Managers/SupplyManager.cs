@@ -84,7 +84,7 @@ public class SupplyManager : MonoBehaviour
 
     private void SetSupplyScore(float value)
     {
-        supplyScore = value;
+        supplyScore = Mathf.Clamp(value, 0f, maxSupplyScore);
         SupplyBar.UpdateProgressBar(supplyScore / maxSupplyScore);
     }
 }

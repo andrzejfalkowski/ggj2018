@@ -12,17 +12,16 @@ public class EnemyCreature : BaseBeing
     private float enemyCooldown = 0.2f;
     private float enemyScoreValue = 1f;
 
-    public GameObject EnemyGO;
-
     public EnemyCreature(GameObject _go, Vector2 _position)
     {
-        EnemyGO = _go;
-        Health = new HealthComponent(_go, enemyTroopHealth, EnemyGO.GetComponentInChildren<BloodParticles>());
+        GameObject = _go;
+        Health = new HealthComponent(this, enemyTroopHealth, GameObject.GetComponentInChildren<BloodParticles>());
         Attack = new AttackComponent(enemyDamage, enemyRange, enemyCooldown, null);
-        transform = EnemyGO.transform;
+        transform = GameObject.transform;
         transform.localPosition = _position - (Vector2)transform.parent.position;
-        navAgent = EnemyGO.GetComponent<NavMeshAgent>();
+        navAgent = GameObject.GetComponent<NavMeshAgent>();
         navAgent.destination = _position;
+        Speed = new SpeedComponent(navAgent);
     }
 
     public void UpdatePosition(Vector2 target)
@@ -42,5 +41,10 @@ public class EnemyCreature : BaseBeing
     public float GetScoreValue()
     {
         return enemyScoreValue;
+    }
+
+    public override void Update()
+    {
+        Speed.Update();
     }
 }

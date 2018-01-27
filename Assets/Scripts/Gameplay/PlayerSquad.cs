@@ -23,7 +23,7 @@ public class PlayerSquad : MonoBehaviour
                 UpdateInfectionState(Troops[i]);
                 if(!Troops[i].IsAlive())
                 {
-                    Destroy(Troops[i].TroopGO);
+                    Destroy(Troops[i].GameObject);
                     Troops.RemoveAt(i);
                     i--;
                 }
@@ -114,7 +114,7 @@ public class PlayerSquad : MonoBehaviour
         {
             for (int i = 0; i < Troops.Count; i++)
             {
-                Destroy(Troops[i].TroopGO);
+                Destroy(Troops[i].GameObject);
             }
         }
     }
@@ -123,7 +123,7 @@ public class PlayerSquad : MonoBehaviour
     {
         if (EnemiesManager.Instance != null && playerTroop.Attack.IsAttackPossible())
         {
-            EnemyCreature enemy = EnemiesManager.Instance.GetNearestEnemy(playerTroop.TroopGO.transform.position,
+            EnemyCreature enemy = EnemiesManager.Instance.GetNearestEnemy(playerTroop.GameObject.transform.position,
                                                                           playerTroop.Attack.Range);
             if(enemy != null)
             {

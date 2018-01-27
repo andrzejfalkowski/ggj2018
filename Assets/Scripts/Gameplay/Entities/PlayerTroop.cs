@@ -10,8 +10,6 @@ public class PlayerTroop : BaseBeing
     private float playerRange = 4;
     private float playerCooldown = 0.1f;
 
-    public GameObject TroopGO;
-
     public int Index;
     public bool IsInfected;
     public bool IsDead;
@@ -20,19 +18,20 @@ public class PlayerTroop : BaseBeing
 
     public PlayerTroop(GameObject _go, int _index, Vector2 _position)
     {
-        TroopGO = _go;
+        GameObject = _go;
         Index = _index;
         IsInfected = false;
         IsDead = false;
-        animation = TroopGO.GetComponentInChildren<AnimatedCharacter>();
-        transform = TroopGO.transform;
+        animation = GameObject.GetComponentInChildren<AnimatedCharacter>();
+        transform = GameObject.transform;
         transform.localPosition = _position;
-        Health = new HealthComponent(_go, playerTroopHealth, TroopGO.GetComponentInChildren<BloodParticles>(), 
-                                     TroopGO.GetComponentInChildren<HealthBar>());
+        Health = new HealthComponent(this, playerTroopHealth, GameObject.GetComponentInChildren<BloodParticles>(), 
+                                     GameObject.GetComponentInChildren<HealthBar>());
         Attack = new AttackComponent(playerDamage, playerRange, playerCooldown, animation);
-        navAgent = TroopGO.GetComponent<NavMeshAgent>();
+        navAgent = GameObject.GetComponent<NavMeshAgent>();
         navAgent.destination = Position;
         animation.SetMoveTarget(Position);
+        Speed = new SpeedComponent(navAgent);
     }
 
     public void UpdatePosition(Vector2 target)

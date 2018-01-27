@@ -25,7 +25,6 @@ public abstract class BaseBeing
         transform.localPosition = _position - (Vector2)transform.parent.position;
         navAgent = GameObject.GetComponent<NavMeshAgent>();
         navAgent.destination = Position;
-        Speed = new SpeedComponent(navAgent);
     }
 
     public virtual bool IsAlive()

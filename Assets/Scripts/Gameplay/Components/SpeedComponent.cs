@@ -11,11 +11,11 @@ public class SpeedComponent
     private bool staggered = false;
     private float staggerCooldown = 0f;
 
-    public SpeedComponent(NavMeshAgent _agent)
+    public SpeedComponent(float _speed, NavMeshAgent _agent)
     {
         agent = _agent;
-
-        defaultSpeed = _agent.speed;
+        _agent.speed = _speed;
+        defaultSpeed = _speed;
     }
 
     public void Update()

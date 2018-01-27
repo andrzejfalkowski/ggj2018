@@ -29,6 +29,10 @@ public class SquadDisplay : MonoBehaviour
         infectedTroops[troopIndex].Init(troopIndex);
     }
 
+    public void HideInfectedTroop(int troopIndex)
+    {
+        infectedTroops[troopIndex].gameObject.SetActive(false);
+    }
     private void OnInfectedTroopViewPressed(int index)
     {
         infectedTroops[index].gameObject.SetActive(false);

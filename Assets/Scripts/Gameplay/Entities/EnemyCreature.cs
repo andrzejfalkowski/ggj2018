@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class EnemyCreature : BaseBeing
 {
@@ -28,7 +29,13 @@ public class EnemyCreature : BaseBeing
     {
         if(navAgent != null)
         {
-            navAgent.destination = target;
+            try
+            {
+                navAgent.destination = target;
+            }
+            catch(Exception ex)
+            {
+            }
         }
     }
 

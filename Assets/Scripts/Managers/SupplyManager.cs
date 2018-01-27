@@ -25,6 +25,12 @@ public class BaseSupplyDefinition
 
 public class SupplyManager : MonoBehaviour 
 {
+    struct SupplyToDrop
+    {
+        public BaseSupplyDefinition BaseSupplyDefinition;
+        public float Time;
+    }
+
     public static SupplyManager Instance = null;
 
     [SerializeField]
@@ -48,7 +54,7 @@ public class SupplyManager : MonoBehaviour
     private List<BaseSupplyDefinition> SupplyDefinitions;
 
     private Vector2 lastMovePoint = Vector2.zero;
-    private Dictionary<BaseSupplyDefinition, float> suppliesToSpawn = new Dictionary<BaseSupplyDefinition, float>();
+    private List<SupplyToDrop> suppliesToDrop = new List<SupplyToDrop>();
 
     private void Awake()
     {
@@ -85,19 +91,12 @@ public class SupplyManager : MonoBehaviour
                 break;
         }
 
-        GameObject go = GameObject.Instantiate(supplyPickupPrefab, supplyPickupsParent);
-        go.GetComponentInChildren<Pickup>().Init(supply);
+        suppliesToDrop.Add(new SupplyToDrop()
+            {
+                BaseSupplyDefinition = supply,
+                Time = supply.ArrivalTime
 
-        Vector2 spawnCandidate = GetSpawnCandidate();
-        int safety = 0;
-        int layerMask = 1 << LayerMask.NameToLayer("Blockers");
-        while(safety < 10 && Physics.Raycast(new Vector3(spawnCandidate.x, spawnCandidate.y, 1f), new Vector3(0f, 0f, -1f), layerMask))
-        {
-            spawnCandidate = GetSpawnCandidate();
-            Debug.Log(spawnCandidate);
-            safety++;
-        }
-        go.transform.localPosition = spawnCandidate;
+        });
     }
 
     Vector2 GetSpawnCandidate()
@@ -134,11 +133,31 @@ public class SupplyManager : MonoBehaviour
         lastMovePoint = value;
     }
 
-//    public void Update()
-//    {
-//        foreach (var pair in suppliesToSpawn)
-//        {
-//            
-//        }
-//    }
+    public void Update()
+    {
+        for (int i = 0; i < suppliesToDrop.Count; i++)
+        {
+            SupplyToDrop std = suppliesToDrop[i];
+            std.Time -= Time.deltaTime;
+            suppliesToDrop[i] = std;
+            if (suppliesToDrop[i].Time <= 0f)
+            {
+                GameObject go = GameObject.Instantiate(supplyPickupPrefab, supplyPickupsParent);
+                go.GetComponentInChildren<Pickup>().Init(suppliesToDrop[i].BaseSupplyDefinition);
+
+                Vector2 spawnCandidate = GetSpawnCandidate();
+                int safety = 0;
+                int layerMask = 1 << LayerMask.NameToLayer("Blockers");
+                while(safety < 10 && Physics.Raycast(new Vector3(spawnCandidate.x, spawnCandidate.y, 1f), new Vector3(0f, 0f, -1f), layerMask))
+                {
+                    spawnCandidate = GetSpawnCandidate();
+                    safety++;
+                }
+                go.transform.localPosition = spawnCandidate;
+
+                suppliesToDrop.RemoveAt(i);
+                i--;
+            }
+        }
+    }
 }

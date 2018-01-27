@@ -13,7 +13,7 @@ public abstract class BaseBeing
     protected Transform transform;
     protected NavMeshAgent navAgent;
 
-    public bool IsAlive()
+    public virtual bool IsAlive()
     {
         return Health.IsAlive();
     }

@@ -416,6 +416,77 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &376596985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 376596986}
+  - component: {fileID: 376596987}
+  - component: {fileID: 376596988}
+  m_Layer: 5
+  m_Name: SquadDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &376596986
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 376596985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 744790068}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.7}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &376596987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 376596985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2095666955, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 160, y: 160}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 2
+  m_ConstraintCount: 2
+--- !u!114 &376596988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 376596985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c647ede18e45d8145920f8d5ad1df432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TroopViewPrefab: {fileID: 114677399882021450, guid: d4aa72ef4fb4cb545856381b5f0aa273,
+    type: 2}
 --- !u!1 &391196816
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentGameState: 0
   IngameHUD: {fileID: 744790069}
+  SquadDisplay: {fileID: 376596988}
   ParticlesParent: {fileID: 219955605}
   playerTroops: 20
   minEnemiesPerWave: 10
@@ -727,6 +799,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 376596986}
   - {fileID: 1840570964}
   m_Father: {fileID: 1877651011}
   m_RootOrder: 0
@@ -747,7 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17fba7239be36c54784437bf01b04eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Container: {fileID: 1840570963}
+  Result: {fileID: 1840570963}
   Message: {fileID: 1424527216}
 --- !u!1 &863226844
 GameObject:
@@ -1333,10 +1406,10 @@ RectTransform:
   m_Father: {fileID: 1840570964}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.2, y: 0.5}
+  m_AnchorMax: {x: 0.8, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1424527215
 MonoBehaviour:
@@ -1463,6 +1536,7 @@ GameObject:
   - component: {fileID: 1654945444}
   - component: {fileID: 1654945443}
   - component: {fileID: 1654945442}
+  - component: {fileID: 1654945445}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1484,10 +1558,10 @@ RectTransform:
   m_Father: {fileID: 1840570964}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.2}
-  m_AnchorMax: {x: 0.5, y: 0.4}
+  m_AnchorMin: {x: 0.35, y: 0.2}
+  m_AnchorMax: {x: 0.65, y: 0.4}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1654945442
 MonoBehaviour:
@@ -1574,6 +1648,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1654945440}
+--- !u!114 &1654945445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1654945440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1700468125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1825,7 +1913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1840570964}
   m_Layer: 5
-  m_Name: Container
+  m_Name: Result
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1845,7 +1933,7 @@ RectTransform:
   - {fileID: 1424527214}
   - {fileID: 1654945441}
   m_Father: {fileID: 744790068}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1900,9 +1988,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

@@ -9,6 +9,8 @@ public class AnimatedCharacter : MonoBehaviour
 
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
 
     [SerializeField]
     private bool overrideAnimation = false;
@@ -34,8 +36,14 @@ public class AnimatedCharacter : MonoBehaviour
     {
         currentTarget = target;
 	}
-	
-	private void Update () 
+
+    public void ChangeSpriteColor(Color color)
+    {
+        spriteRenderer.color = color;
+    }
+
+
+    private void Update () 
     {
         if (!overrideAnimation)
         {

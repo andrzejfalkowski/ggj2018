@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleTreshold: 0.1
   animator: {fileID: 95938021518927798}
+  spriteRenderer: {fileID: 212833710433026240}
   overrideAnimation: 0
   CurrentState: 0
   CurrentDirection: 0

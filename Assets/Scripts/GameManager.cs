@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [SerializeField]
     private IngameHUD IngameHUD;
+    [SerializeField]
+    private SquadDisplay SquadDisplay;
     public Transform ParticlesParent;
     [Header("Parameters")]
     [SerializeField]
@@ -77,6 +79,21 @@ public class GameManager : MonoBehaviour
         return playerSquad.GetNearestTroop(origin, range);
     }
 
+    public void ShowInfectedTroop(int troopIndex)
+    {
+        SquadDisplay.ShowInfectedTroop(troopIndex);
+    }
+
+    public void KillTroopWithInfection(int troopIndex)
+    {
+        playerSquad.KillTroopWithInfection(troopIndex);
+    }
+
+    public void InfectRandomTroop()
+    {
+        playerSquad.InfectRandomTroop();
+    }
+
     public void GameOver()
     {
         for(int i = 0; i < enemySpawns.Count; i++)
@@ -101,5 +118,6 @@ public class GameManager : MonoBehaviour
                                 enemiesWavePeriod, Random.Range(0, enemiesWavePeriod),
                                 enemiesIncreamentPerWave);
         }
+        SquadDisplay.Init(playerTroops);
     }
 }

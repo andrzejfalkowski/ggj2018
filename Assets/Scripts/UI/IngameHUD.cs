@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class IngameHUD : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Container;
+    private GameObject Result;
     [SerializeField]
     private Text Message;
 
@@ -17,6 +17,6 @@ public class IngameHUD : MonoBehaviour
     public void Show(float elapsedTime)
     {
         Message.text = "Nice try! You survived: " + elapsedTime.ToString("N1") + " seconds.";
-        Container.SetActive(true);
+        Result.SetActive(true);
     }
 }

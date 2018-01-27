@@ -20,6 +20,7 @@ public class PlayerSquad : MonoBehaviour
             for (int i = 0; i < Troops.Count; i++)
             {
                 PerformAttack(Troops[i]);
+                UpdateInfectionState(Troops[i]);
                 if(!Troops[i].IsAlive())
                 {
                     Destroy(Troops[i].TroopGO);
@@ -81,6 +82,32 @@ public class PlayerSquad : MonoBehaviour
         return nearestTroop;
     }
 
+    public void KillTroopWithInfection(int troopIndex)
+    {
+        if (Troops != null)
+        {
+            PlayerTroop troopToKill = Troops.Find((t) => t.Index.Equals(troopIndex));
+            if(troopToKill != null)
+            {
+                troopToKill.IsDead = true;
+            }
+        }
+    }
+
+    public void InfectRandomTroop()
+    {
+        if (Troops != null)
+        {
+            PlayerTroop troopToInfect = Troops.Find((t) => !t.IsInfected && !t.IsDead);
+            if(troopToInfect != null)
+            {
+                troopToInfect.IsInfected = true;
+                GameManager.Instance.ShowInfectedTroop(troopToInfect.Index);
+                troopToInfect.ChangeColorToInfected();
+            }
+        }
+    }
+
     private void ClearExistingData()
     {
         if (Troops != null)
@@ -138,6 +165,17 @@ public class PlayerSquad : MonoBehaviour
             {
                 GameManager.Instance.GameOver();
             }
+        }
+    }
+
+    private void UpdateInfectionState(PlayerTroop playerTroop)
+    {
+        if(GameManager.Instance != null && playerTroop.ShouldBeInfected() &&
+           !playerTroop.IsInfected)
+        {
+            playerTroop.IsInfected = true;
+            GameManager.Instance.ShowInfectedTroop(playerTroop.Index);
+            playerTroop.ChangeColorToInfected();
         }
     }
 }

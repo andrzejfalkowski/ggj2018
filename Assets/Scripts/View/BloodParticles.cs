@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BloodParticles : MonoBehaviour
 {
@@ -21,11 +22,21 @@ public class BloodParticles : MonoBehaviour
             transform.localScale = Vector3.one;
         }
         //
-        transform.position = linkedBeing.position + Vector3.back*0.5f;
-        Particles.Emit(Random.Range(minParticlesInEmission, maxParticlesInEmission));
-        if (destroy)
+        try
         {
-            Destroy(gameObject, 1.0f);
+            if (transform != null && linkedBeing != null && Particles != null)
+            {
+                transform.position = linkedBeing.position + Vector3.back * 0.5f;
+                Particles.Emit(UnityEngine.Random.Range(minParticlesInEmission, maxParticlesInEmission));
+                if (destroy)
+                {
+                    Destroy(gameObject, 1.0f);
+                }
+            }
+        }
+        catch(Exception ex)
+        {
+            Debug.LogWarning("NullReference catched");
         }
     }
 }

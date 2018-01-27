@@ -13,6 +13,8 @@ public class PlayerTroop : BaseBeing
     public GameObject TroopGO;
 
     public int Index;
+    public bool IsInfected;
+    public bool IsDead;
 
     private AnimatedCharacter animation;
 
@@ -20,6 +22,8 @@ public class PlayerTroop : BaseBeing
     {
         TroopGO = _go;
         Index = _index;
+        IsInfected = false;
+        IsDead = false;
         transform = TroopGO.transform;
         transform.localPosition = _position;
         Health = new HealthComponent(playerTroopHealth, TroopGO.GetComponentInChildren<BloodParticles>(), 
@@ -38,5 +42,20 @@ public class PlayerTroop : BaseBeing
             navAgent.SetDestination(target);
             animation.SetMoveTarget(target);
         }
+    }
+
+    public override bool IsAlive()
+    {
+        return base.IsAlive() || !IsDead;
+    }
+
+    public bool ShouldBeInfected()
+    {
+        return !Health.IsAlive();
+    }
+
+    public void ChangeColorToInfected()
+    {
+        animation.ChangeSpriteColor(Color.red);
     }
 }

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4208212382729194}
   - component: {fileID: 114465200629766838}
   - component: {fileID: 114311944656773360}
+  - component: {fileID: 114401508462248706}
   m_Layer: 0
   m_Name: GameRoot
   m_TagString: Untagged
@@ -1020,6 +1021,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateRateInSeconds: 0.3
+--- !u!114 &114401508462248706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1006639776814360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5acd0339104856b448a5ed6d639f7806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SupplyBar: {fileID: 0}
+  maxSupplyScore: 100
+  startSupplyScore: 0
+  SupplyDefinitions:
+  - Icon: {fileID: 0}
+    Title: Weapons Drop
+    SupplyType: 0
+    SupplyCost: 0.5
+    Cooldown: 0
+    ArrivalTime: 3
+  - Icon: {fileID: 0}
+    Title: Medkits Drop
+    SupplyType: 1
+    SupplyCost: 1
+    Cooldown: 0
+    ArrivalTime: 3
 --- !u!114 &114416303532362434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1045,14 +1073,12 @@ MonoBehaviour:
   CurrentGameState: 0
   IngameHUD: {fileID: 0}
   SquadDisplay: {fileID: 0}
-  SupplyBar: {fileID: 0}
   ParticlesParent: {fileID: 4102743187701758}
   playerTroops: 20
   minEnemiesPerWave: 10
   maxEnemiesPerWave: 25
   enemiesWavePeriod: 5
   enemiesIncreamentPerWave: 2
-  maxSupplyScore: 100
 --- !u!114 &114555097810097968
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour
     private IngameHUD IngameHUD;
     [SerializeField]
     private SquadDisplay SquadDisplay;
-    [SerializeField]
-    private SupplyBar SupplyBar;
     public Transform ParticlesParent;
 
     [Header("Parameters")]
@@ -35,16 +33,11 @@ public class GameManager : MonoBehaviour
     private float enemiesWavePeriod;
     [SerializeField]
     private int enemiesIncreamentPerWave;
-    [SerializeField]
-    private float maxSupplyScore = 100f;
-    [SerializeField]
-    private float startSupplyScore = 0f;
 
     private PlayerSquad playerSquad;
     private List<EnemySpawn> enemySpawns;
 
     private float timeCounter;
-    private float supplyScore;
 
     private void Awake()
 	{
@@ -127,17 +120,6 @@ public class GameManager : MonoBehaviour
                                 enemiesIncreamentPerWave);
         }
         SquadDisplay.Init(playerTroops);
-        SetSupplyScore(startSupplyScore);
-    }
-        
-    public void ChangeSupplyScore(float change)
-    {
-        SetSupplyScore(supplyScore + change);
-    }
-
-    private void SetSupplyScore(float value)
-    {
-        supplyScore = value;
-        SupplyBar.UpdateProgressBar(supplyScore / maxSupplyScore);
+        SupplyManager.Instance.InitializeGame();
     }
 }

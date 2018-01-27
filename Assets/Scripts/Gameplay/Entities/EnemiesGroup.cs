@@ -23,7 +23,7 @@ public class EnemiesGroup
             PerformAttack(enemies[i]);
             if (!enemies[i].IsAlive())
             {
-                GameManager.Instance.ChangeSupplyScore(enemies[i].GetScoreValue());
+                SupplyManager.Instance.ChangeSupplyScore(enemies[i].GetScoreValue());
                 GameObject.Destroy(enemies[i].EnemyGO);
                 enemies.RemoveAt(i);
                 i--;

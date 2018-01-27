@@ -9,6 +9,7 @@ public class EnemyCreature : BaseBeing
     private float enemyDamage = 5;
     private float enemyRange = 0.5f;
     private float enemyCooldown = 0.2f;
+    private float enemyScoreValue = 1f;
 
     public GameObject EnemyGO;
 
@@ -29,5 +30,10 @@ public class EnemyCreature : BaseBeing
         {
             navAgent.destination = target;
         }
+    }
+
+    public float GetScoreValue()
+    {
+        return enemyScoreValue;
     }
 }

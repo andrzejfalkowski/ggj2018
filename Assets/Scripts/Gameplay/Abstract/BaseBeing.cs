@@ -15,6 +15,18 @@ public abstract class BaseBeing
 
     protected Transform transform;
     protected NavMeshAgent navAgent;
+    protected AnimatedCharacter animation;
+
+    public BaseBeing(GameObject _go, Vector2 _position)
+    {
+        GameObject = _go;
+        animation = GameObject.GetComponentInChildren<AnimatedCharacter>();
+        transform = GameObject.transform;
+        transform.localPosition = _position - (Vector2)transform.parent.position;
+        navAgent = GameObject.GetComponent<NavMeshAgent>();
+        navAgent.destination = Position;
+        Speed = new SpeedComponent(navAgent);
+    }
 
     public virtual bool IsAlive()
     {

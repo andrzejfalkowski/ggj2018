@@ -19,4 +19,6 @@ public class GameSettings : ScriptableObject
 
     [Header("Visual")]
     public float healthBarVisibilityTime = 2.0f;
+    public float frontArmAnimLength = 0.1f;
+    public float frontArmRestoreIdleLength = 0.5f;
 }

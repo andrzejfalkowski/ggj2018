@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [SerializeField]
     private IngameHUD IngameHUD;
+    public Transform ParticlesParent;
     [Header("Parameters")]
     [SerializeField]
     private int playerTroops;

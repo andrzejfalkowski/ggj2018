@@ -3,13 +3,15 @@
 public class HealthComponent
 {
     private HealthBar barView;
+    private BloodParticles particles;
 
     public float MaxHealth;
     public float CurrentHealth;
 
-    public HealthComponent(float _maxHealth, HealthBar _barView = null)
+    public HealthComponent(float _maxHealth, BloodParticles _particles, HealthBar _barView = null)
     {
         MaxHealth = CurrentHealth = _maxHealth;
+        particles = _particles;
         barView = _barView;
     }
 
@@ -23,6 +25,7 @@ public class HealthComponent
     {
         CurrentHealth = Mathf.Max(0, CurrentHealth - damage);
         RefreshView();
+        particles.Play(CurrentHealth == 0);
     }
 
     public bool IsAlive()

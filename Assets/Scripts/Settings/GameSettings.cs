@@ -24,4 +24,19 @@ public class GameSettings : ScriptableObject
     public float healthBarVisibilityTime = 2.0f;
     public float frontArmAnimLength = 0.1f;
     public float frontArmRestoreIdleLength = 0.5f;
+
+    [Header("Spawners")]
+    public int playerTroops = 20;
+    [Space]
+    public int minEnemiesFromSpawnerPerWave = 10;
+    public int maxEnemiesFromSpawnerPerWave = 25;
+    public int enemiesIncreamentPerWave = 2;
+    [Space]
+    public int minSpawnersInWave = 2;
+    public int maxSpawnersInWave = 8;
+    public int spawnersIncreamentPerWave = 1;
+    [Space]
+    public float maxEnemiesWavePeriodInS = 30;
+    public float minEnemiesWavePeriodInS = 15;
+    public int periodDecreamentPerWave = 1;
 }

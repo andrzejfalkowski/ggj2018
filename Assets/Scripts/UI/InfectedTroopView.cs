@@ -8,8 +8,6 @@ public class InfectedTroopView : MonoBehaviour
 {
     [SerializeField]
     private Image Fill;
-    [SerializeField]
-    private float DelayBeforeChange;
 
     [HideInInspector]
     public int IndexOfInfectedTroop;
@@ -18,13 +16,15 @@ public class InfectedTroopView : MonoBehaviour
     private bool isInitialized = false;
     private Action<int> pressCallback;
 
+    private float InfectionCooldown { get { return SettingsService.GameSettings.InfectionCooldown; } }
+
     private void Update()
     {
         if(isInitialized)
         {
             timer += Time.deltaTime;
-            Fill.fillAmount = Mathf.Clamp01(timer / DelayBeforeChange);
-            if (timer >= DelayBeforeChange)
+            Fill.fillAmount = Mathf.Clamp01(timer / InfectionCooldown);
+            if (timer >= InfectionCooldown)
             {
                 OnTroopIconPressed();
                 GameManager.Instance.InfectRandomTroop();

@@ -9,6 +9,9 @@ public class GameSettings : ScriptableObject
     public EnemyProperties WeakZombi;
     public PlayerProperties Player;
 
+    [Header("Infection")]
+    public float InfectionCooldown = 5;
+
     [Header("Formations")]
     public float RectFormation_distanceBetweenTroops = 0.5f;
     public float HordeFormation_distanceBetweenTroops = 0.3f;

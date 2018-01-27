@@ -117,9 +117,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4837894140878294}
-  - component: {fileID: 33394339118995988}
   - component: {fileID: 136507563254669978}
-  - component: {fileID: 23432034581239772}
   - component: {fileID: 195474655414831940}
   m_Layer: 8
   m_Name: EnemyCreature
@@ -185,7 +183,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271802089791512}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 0, z: 0.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 4905325308537690}
@@ -317,47 +315,6 @@ Transform:
   m_Father: {fileID: 4368342162935690}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5}
---- !u!23 &23432034581239772
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1776333145086796}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: e2fce3f55c67de64aac67a92a7dd2c1a, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &33394339118995988
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1776333145086796}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!95 &95962495218923832
 Animator:
   serializedVersion: 3
@@ -424,6 +381,7 @@ MonoBehaviour:
   idleTreshold: 0.1
   separateMoveAndAttackDirection: 0
   separateAttackParent: {fileID: 0}
+  frontArmTransform: {fileID: 0}
   animator: {fileID: 95962495218923832}
   attackAnimator: {fileID: 0}
   spriteRenderers:
@@ -437,7 +395,6 @@ MonoBehaviour:
   currentTarget: {x: 0, y: 0}
   currentAttackTarget: {x: 0, y: 0}
   CurrentState: 0
-  Attacking: 0
   CurrentDirection: 0
   CurrentAttackDirection: 0
 --- !u!136 &136507563254669978
@@ -449,10 +406,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.15, y: 0, z: -0.4}
 --- !u!195 &195474655414831940
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -534,7 +491,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -654822200
+  randomSeed: -964073023
   InitialModule:
     serializedVersion: 3
     enabled: 1

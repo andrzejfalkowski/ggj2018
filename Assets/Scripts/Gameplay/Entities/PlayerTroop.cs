@@ -22,7 +22,7 @@ public class PlayerTroop : BaseBeing
         Index = _index;
         transform = TroopGO.transform;
         transform.localPosition = _position;
-        Health = new HealthComponent(playerTroopHealth);
+        Health = new HealthComponent(playerTroopHealth, TroopGO.GetComponentInChildren<HealthBar>());
         Attack = new AttackComponent(playerDamage, playerRange, playerCooldown);
         navAgent = TroopGO.GetComponent<NavMeshAgent>();
         navAgent.destination = Position;

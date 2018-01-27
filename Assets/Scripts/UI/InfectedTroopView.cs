@@ -28,6 +28,7 @@ public class InfectedTroopView : MonoBehaviour
             {
                 OnTroopIconPressed();
                 GameManager.Instance.InfectRandomTroop();
+                isInitialized = false;
             }
         }
     }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 // Use physics raycast hit from mouse click to set agent destination
 [RequireComponent(typeof(PlayerSquad))]
@@ -15,7 +16,8 @@ public class ClickToMove : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftShift))
+        if (!EventSystem.current.IsPointerOverGameObject() &&
+            Input.GetMouseButtonDown(0))
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray.origin, ray.direction, out m_HitInfo))

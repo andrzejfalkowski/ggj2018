@@ -14,9 +14,14 @@ public class PlayerTroop : BaseBeing
         Index = _index;
         IsInfected = false;
         IsDead = false;
-        Health = new HealthComponent(this, properties.playerTroopHealth, GameObject.GetComponentInChildren<BloodParticles>(), 
+        Health = new HealthComponent(this, properties.playerTroopHealth * UnityEngine.Random.Range(0.9f, 1.1f),
+            // (1f - properties.playerTroopVariation, 1f + properties.playerTroopVariation,)
+            GameObject.GetComponentInChildren<BloodParticles>(), 
                                      GameObject.GetComponentInChildren<HealthBar>());
-        Attack = new AttackComponent(properties.playerDamage, properties.playerRange, properties.playerCooldown, animation);
+        Attack = new AttackComponent(properties.playerDamage * UnityEngine.Random.Range(0.9f, 1.1f),
+            // (1f - properties.playerDamageVariation, 1f + properties.playerDamageVariation,)
+            properties.playerRange, properties.playerCooldown, animation);
+        Speed = new SpeedComponent(3.5f * UnityEngine.Random.Range(0.9f, 1.1f), navAgent);
         animation.Init(this);
         animation.SetMoveTarget(Position);
     }

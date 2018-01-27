@@ -104,7 +104,7 @@ public class SupplyManager : MonoBehaviour
         float randomRange = UnityEngine.Random.Range(0f, lastMovePointRange);
         float x = UnityEngine.Random.Range(-randomRange, randomRange);
         float y = Mathf.Sqrt((randomRange * randomRange) - (x * x));
-        return new Vector2(x, y);
+        return new Vector2(x + lastMovePoint.x, y + lastMovePoint.y);
     }
 
     public void TriggerSupplyPickup(BaseSupplyDefinition supply)

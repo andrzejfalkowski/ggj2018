@@ -28,7 +28,7 @@ public class AttackComponent
         lastAttackTime = Time.time;
         if (animation != null)
         {
-            animation.AnimateAttack((Vector2)target.Owner.transform.position);
+            animation.AnimateAttack((Vector2)target.Owner.GameObject.transform.position);
         }
     }
 }

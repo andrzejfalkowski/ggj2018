@@ -20,11 +20,12 @@ public class EnemiesGroup
         int prevEnemiesCount = enemies.Count;
         for (int i = 0; i < enemies.Count; i++)
         {
+            enemies[i].Update();
             PerformAttack(enemies[i]);
             if (!enemies[i].IsAlive())
             {
                 SupplyManager.Instance.ChangeSupplyScore(enemies[i].GetScoreValue());
-                GameObject.Destroy(enemies[i].EnemyGO);
+                GameObject.Destroy(enemies[i].GameObject);
                 enemies.RemoveAt(i);
                 i--;
             }
@@ -79,10 +80,10 @@ public class EnemiesGroup
 
     private void PerformAttack(EnemyCreature enemyCreature)
     {
-        if (GameManager.Instance != null && enemyCreature.EnemyGO != null &&
+        if (GameManager.Instance != null && enemyCreature.GameObject != null &&
             enemyCreature.Attack.IsAttackPossible())
         {
-            PlayerTroop troop = GameManager.Instance.GetNearestPlayerTroop(enemyCreature.EnemyGO.transform.position,
+            PlayerTroop troop = GameManager.Instance.GetNearestPlayerTroop(enemyCreature.GameObject.transform.position,
                                                                            enemyCreature.Attack.Range);
             if (troop != null)
             {

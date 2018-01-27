@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class PlayerTroop : BaseBeing
 {
-    public GameObject TroopGO;
-
     public int Index;
     public bool IsInfected;
     public bool IsDead;
@@ -15,19 +13,20 @@ public class PlayerTroop : BaseBeing
 
     public PlayerTroop(GameObject _go, int _index, Vector2 _position, PlayerProperties properties)
     {
-        TroopGO = _go;
+        GameObject = _go;
         Index = _index;
         IsInfected = false;
         IsDead = false;
-        animation = TroopGO.GetComponentInChildren<AnimatedCharacter>();
-        transform = TroopGO.transform;
+        animation = GameObject.GetComponentInChildren<AnimatedCharacter>();
+        transform = GameObject.transform;
         transform.localPosition = _position;
-        Health = new HealthComponent(_go, properties.playerTroopHealth, TroopGO.GetComponentInChildren<BloodParticles>(), 
-                                     TroopGO.GetComponentInChildren<HealthBar>());
+        Health = new HealthComponent(this, properties.playerTroopHealth, GameObject.GetComponentInChildren<BloodParticles>(), 
+                                     GameObject.GetComponentInChildren<HealthBar>());
         Attack = new AttackComponent(properties.playerDamage, properties.playerRange, properties.playerCooldown, animation);
-        navAgent = TroopGO.GetComponent<NavMeshAgent>();
+        navAgent = GameObject.GetComponent<NavMeshAgent>();
         navAgent.destination = Position;
         animation.SetMoveTarget(Position);
+        Speed = new SpeedComponent(navAgent);
     }
 
     public void UpdatePosition(Vector2 target)

@@ -7,6 +7,9 @@ public abstract class BaseBeing
 {
     public HealthComponent Health;
     public AttackComponent Attack;
+    public SpeedComponent Speed;
+
+    public GameObject GameObject;
 
     public Vector2 Position { get { return transform != null ? (Vector2)transform.position : Vector2.zero; } }
 
@@ -22,4 +25,7 @@ public abstract class BaseBeing
     {
         Attack.PerformAttack(opponentHealth);
     }
+
+    public virtual void Update()
+    {}
 }

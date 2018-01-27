@@ -8,9 +8,9 @@ public class HealthComponent
     public float MaxHealth;
     public float CurrentHealth;
 
-    public GameObject Owner;
+    public BaseBeing Owner;
 
-    public HealthComponent(GameObject _owner, float _maxHealth, BloodParticles _particles, HealthBar _barView = null)
+    public HealthComponent(BaseBeing _owner, float _maxHealth, BloodParticles _particles, HealthBar _barView = null)
     {
         Owner = _owner;
         MaxHealth = CurrentHealth = _maxHealth;
@@ -29,6 +29,7 @@ public class HealthComponent
         CurrentHealth = Mathf.Max(0, CurrentHealth - damage);
         RefreshView();
         particles.Play(CurrentHealth == 0);
+        Owner.Speed.Stagger();
     }
 
     public bool IsAlive()

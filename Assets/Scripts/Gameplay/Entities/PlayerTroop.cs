@@ -9,24 +9,15 @@ public class PlayerTroop : BaseBeing
     public bool IsInfected;
     public bool IsDead;
 
-    private AnimatedCharacter animation;
-
-    public PlayerTroop(GameObject _go, int _index, Vector2 _position, PlayerProperties properties)
+    public PlayerTroop(GameObject _go, int _index, Vector2 _position, PlayerProperties properties) : base(_go, _position)
     {
-        GameObject = _go;
         Index = _index;
         IsInfected = false;
         IsDead = false;
-        animation = GameObject.GetComponentInChildren<AnimatedCharacter>();
-        transform = GameObject.transform;
-        transform.localPosition = _position;
         Health = new HealthComponent(this, properties.playerTroopHealth, GameObject.GetComponentInChildren<BloodParticles>(), 
                                      GameObject.GetComponentInChildren<HealthBar>());
         Attack = new AttackComponent(properties.playerDamage, properties.playerRange, properties.playerCooldown, animation);
-        navAgent = GameObject.GetComponent<NavMeshAgent>();
-        navAgent.destination = Position;
         animation.SetMoveTarget(Position);
-        Speed = new SpeedComponent(navAgent);
     }
 
     public void UpdatePosition(Vector2 target)

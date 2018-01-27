@@ -24,7 +24,7 @@ public class BloodParticles : MonoBehaviour
         //
         try
         {
-            if (transform != null && linkedBeing != null && Particles != null)
+            if (gameObject != null && transform != null && linkedBeing != null && Particles != null)
             {
                 transform.position = linkedBeing.position + Vector3.back * 0.5f;
                 Particles.Emit(UnityEngine.Random.Range(minParticlesInEmission, maxParticlesInEmission));

@@ -11,16 +11,18 @@ public class EnemySpawn : MonoBehaviour
 
     private bool isInitialized = false;
     private int enemiesPerWave;
+    private int increament;
     private float wavesPeriod;
 
     private float timer = 0;
 
-    public void Init(int _enemiesPerWave, float _wavesPeriod, float _offset)
+    public void Init(int _enemiesPerWave, float _wavesPeriod, float _offset, int _increament)
     {
         isInitialized = true;
         timer = _offset;
         enemiesPerWave = _enemiesPerWave;
         wavesPeriod = _wavesPeriod;
+        increament = _increament;
         Formation = new HordeFormation(enemiesPerWave);
         Formation.CalculatePosition(transform.position);
         if(wavesPeriod < 0)
@@ -38,6 +40,7 @@ public class EnemySpawn : MonoBehaviour
             {
                 timer = 0;
                 SpawnEnemies();
+                enemiesPerWave += increament;
             }
         }
 	}
@@ -49,7 +52,7 @@ public class EnemySpawn : MonoBehaviour
         for (int i = 0; i < enemiesPerWave; i++)
         {
             Transform trans = Instantiate<Transform>(enemyPrefab, transform.position, transform.rotation, transform);
-            spawnedEnemies.Add(new EnemyCreature(trans.gameObject, Formation.GetPositionOfTroop(i)));
+            spawnedEnemies.Add(new EnemyCreature(trans.gameObject, Formation.GetPositionOfTroop(i, transform.position)));
         }
         if(EnemiesManager.Instance != null)
         {

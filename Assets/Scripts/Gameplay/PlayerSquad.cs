@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,24 +10,36 @@ public class PlayerSquad : MonoBehaviour
 
     private List<PlayerTroop> Troops;
     private BaseSquadFormation Formation;
-    private SquadTarget Target;
+    private TargetComponent Target;
+
+    private void Update()
+    {
+        if (Troops != null)
+        {
+            int prevTroopsCount = Troops.Count;
+            for (int i = 0; i < Troops.Count; i++)
+            {
+                PerformAttack(Troops[i]);
+                if(!Troops[i].IsAlive())
+                {
+                    Destroy(Troops[i].TroopGO);
+                    Troops.RemoveAt(i);
+                    i--;
+                }
+            }
+            CheckTroopsState(prevTroopsCount);
+        }
+    }
 
     public void Init(int troopsCount)
     {
         ClearExistingData();
-        Target = new SquadTarget();
-        int columns = troopsCount / Mathf.FloorToInt(Mathf.Sqrt(troopsCount));
-        Formation = new RectFormation(troopsCount, columns);
-        Formation.CalculatePosition(Target.Position);
-        Troops = new List<PlayerTroop>();
-        for (int i = 0; i < troopsCount; i++)
-        {
-            Transform trans = Instantiate<Transform>(troopPrefab, transform.position, troopPrefab.rotation, transform);
-            Troops.Add(new PlayerTroop(trans.gameObject, i, Formation.GetPositionOfTroop(i)));
-        }
+        Target = new TargetComponent();
+        CreateFormation(troopsCount);
+        InstantiateTroops(troopsCount);
     }
 	
-	public void UpgadeTarget(Vector2 target)
+	public void UpdateTarget(Vector2 target)
     {
         if (Troops != null && Formation != null && Target != null)
         {
@@ -34,7 +47,7 @@ public class PlayerSquad : MonoBehaviour
             Formation.CalculatePosition(Target.Position);
             for (int i = 0; i < Troops.Count; i++)
             {
-                Troops[i].UpdatePosition(Formation.GetPositionOfTroop(i));
+                Troops[i].UpdatePosition(Formation.GetPositionOfTroop(i, Troops[i].Position));
             }
         }
 	}
@@ -51,13 +64,77 @@ public class PlayerSquad : MonoBehaviour
         }
     }
 
+    public PlayerTroop GetNearestTroop(Vector2 origin)
+    {
+        PlayerTroop nearestTroop = null;
+        float distanceToClosest = float.MaxValue;
+        for (int i = 0; i < Troops.Count; i++)
+        {
+            float distanceToCurrent = Vector3.Distance(Troops[i].Position, origin);
+            if (distanceToCurrent < distanceToClosest)
+            {
+                nearestTroop = Troops[i];
+                distanceToClosest = distanceToCurrent;
+            }
+        }
+        return nearestTroop;
+    }
+
     private void ClearExistingData()
     {
-        if (Troops != null && Formation != null && Target != null)
+        if (Troops != null)
         {
             for (int i = 0; i < Troops.Count; i++)
             {
                 Destroy(Troops[i].TroopGO);
+            }
+        }
+    }
+
+    private void PerformAttack(PlayerTroop playerTroop)
+    {
+        if (EnemiesManager.Instance != null)
+        {
+            EnemyCreature enemy = EnemiesManager.Instance.GetNearestEnemy(playerTroop.TroopGO.transform.position);
+            if(enemy != null)
+            {
+                playerTroop.PerformAttack(enemy.Health, enemy.Position);
+            }
+        }
+    }
+
+    private void InstantiateTroops(int troopsCount)
+    {
+        Troops = new List<PlayerTroop>();
+        for (int i = 0; i < troopsCount; i++)
+        {
+            Transform trans = Instantiate<Transform>(troopPrefab, transform.position, troopPrefab.rotation, transform);
+            Troops.Add(new PlayerTroop(trans.gameObject, i, Formation.GetPositionOfTroop(i, transform.position)));
+        }
+    }
+
+    private void CreateFormation(int troopsCount)
+    {
+        if(troopsCount > 0)
+        {
+            int columns = troopsCount / Mathf.FloorToInt(Mathf.Sqrt(troopsCount));
+            Formation = new RectFormation(troopsCount, columns);
+            Formation.CalculatePosition(Target.Position);
+        }
+    }
+
+    private void CheckTroopsState(int prevTroopsCount)
+    {
+        if(prevTroopsCount != Troops.Count)
+        {
+            if(Troops.Count > 0)
+            {
+                CreateFormation(Troops.Count);
+                UpdateTarget(Target.Position);
+            }
+            else
+            {
+                GameManager.Instance.GameOver();
             }
         }
     }

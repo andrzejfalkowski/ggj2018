@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SquadTarget
+public class TargetComponent
 {
     public Vector2 Position;
 
-    public SquadTarget()
+    public TargetComponent()
     {
         Position = Vector2.zero;
     }

@@ -26,7 +26,7 @@ public class EnemySpawnEditor : Editor
             if (int.TryParse(numberOfTroopsString, out amountOfEnemies) &&
                 int.TryParse(wavePeriodString, out wavePeriod))
             {
-                myTarget.Init(amountOfEnemies, wavePeriod, 0);
+                myTarget.Init(amountOfEnemies, wavePeriod, 0, 0);
             }
         }
     }

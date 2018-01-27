@@ -8,8 +8,8 @@ public abstract class BaseSquadFormation
 
     public abstract void CalculatePosition(Vector2 targetPos);
 
-    public virtual Vector2 GetPositionOfTroop(int index)
+    public virtual Vector2 GetPositionOfTroop(int index, Vector2 currentPos)
     {
-        return index < Slots.Count ? Slots[index] : Vector2.zero;
+        return index < Slots.Count ? Slots[index] : currentPos;
     }
 }

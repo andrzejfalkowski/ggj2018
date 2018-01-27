@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
 
 	public EGameState CurrentGameState = EGameState.GAME_STARTING;
 
+    [Header("UI")]
+    [SerializeField]
+    private IngameHUD IngameHUD;
+    [Header("Parameters")]
     [SerializeField]
     private int playerTroops;
     [SerializeField]
@@ -23,9 +27,13 @@ public class GameManager : MonoBehaviour
     private int maxEnemiesPerWave;
     [SerializeField]
     private float enemiesWavePeriod;
+    [SerializeField]
+    private int enemiesIncreamentPerWave;
 
     private PlayerSquad playerSquad;
     private List<EnemySpawn> enemySpawns;
+
+    private float timeCounter;
 
     private void Awake()
 	{
@@ -38,7 +46,9 @@ public class GameManager : MonoBehaviour
 		{
 			GameObject.Destroy(this.gameObject);
 		}
-	}
+        timeCounter = 0;
+
+    }
 
 	private void Update()
 	{
@@ -49,7 +59,8 @@ public class GameManager : MonoBehaviour
                 CurrentGameState = EGameState.GAME_IN_PROGRESS;
                 break;
 			case EGameState.GAME_IN_PROGRESS:
-				break;
+                timeCounter += Time.deltaTime;
+                break;
 			case EGameState.GAME_OVER:
 				break;
 		}
@@ -58,6 +69,20 @@ public class GameManager : MonoBehaviour
     public Vector2 GetPlayerSquadPosition()
     {
         return playerSquad.GetSquadTarget();
+    }
+
+    public PlayerTroop GetNearestPlayerTroop(Vector2 origin)
+    {
+        return playerSquad.GetNearestTroop(origin);
+    }
+
+    public void GameOver()
+    {
+        for(int i = 0; i < enemySpawns.Count; i++)
+        {
+            Destroy(enemySpawns[i].gameObject);
+        }
+        IngameHUD.Show(timeCounter);
     }
 
     private void FindReferences()
@@ -72,7 +97,8 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < enemySpawns.Count; i++)
         {
             enemySpawns[i].Init(Random.Range(minEnemiesPerWave, maxEnemiesPerWave),
-                                enemiesWavePeriod, Random.Range(0, enemiesWavePeriod));
+                                enemiesWavePeriod, Random.Range(0, enemiesWavePeriod),
+                                enemiesIncreamentPerWave);
         }
     }
 }

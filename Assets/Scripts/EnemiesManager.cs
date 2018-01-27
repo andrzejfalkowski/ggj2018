@@ -29,20 +29,44 @@ public class EnemiesManager : MonoBehaviour
 
     private void Update()
     {
+        NavigateEnemies();
+        UpdateEnemiesState();
+    }
+
+    public void AddEnemyGroup(EnemiesGroup enemyGroup)
+    {
+        EnemiesGroupList.Add(enemyGroup);
+    }
+
+    public EnemyCreature GetNearestEnemy(Vector2 origin)
+    {
+        EnemyCreature enemy = null;
+        for (int i = 0; i < EnemiesGroupList.Count; i++)
+        {
+            enemy = EnemiesGroupList[i].GetNearestEnemy(enemy, origin);
+        }
+        return enemy;
+    }
+
+    private void NavigateEnemies()
+    {
         timer += Time.deltaTime;
-        if(timer > updateRateInSeconds)
+        if (timer > updateRateInSeconds)
         {
             timer = 0;
             Vector2 playerPos = GameManager.Instance.GetPlayerSquadPosition();
-            for(int i = 0; i < EnemiesGroupList.Count; i++)
+            for (int i = 0; i < EnemiesGroupList.Count; i++)
             {
                 EnemiesGroupList[i].SetTarget(playerPos);
             }
         }
     }
 
-    public void AddEnemyGroup(EnemiesGroup enemyGroup)
+    private void UpdateEnemiesState()
     {
-        EnemiesGroupList.Add(enemyGroup);
+        for (int i = 0; i < EnemiesGroupList.Count; i++)
+        {
+            EnemiesGroupList[i].UpdateGroupState();
+        }
     }
 }

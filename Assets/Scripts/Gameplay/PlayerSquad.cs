@@ -90,6 +90,7 @@ public class PlayerSquad : MonoBehaviour
             if(troopToKill != null)
             {
                 troopToKill.IsDead = true;
+                troopToKill.Health.CurrentHealth = 0;
             }
         }
     }

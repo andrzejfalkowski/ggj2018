@@ -29,7 +29,10 @@ public class HealthComponent
         CurrentHealth = Mathf.Max(0, CurrentHealth - damage);
         RefreshView();
         particles.Play(CurrentHealth == 0);
-        Owner.Speed.Stagger();
+        if(Owner as EnemyCreature != null)
+        {
+            Owner.Speed.Stagger();
+        }
     }
 
     public bool IsAlive()

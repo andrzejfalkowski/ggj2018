@@ -4,6 +4,12 @@ using UnityEngine;
 
 public abstract class BaseSquadFormation
 {
+    protected List<Vector2> Slots;
+
     public abstract void CalculatePosition(Vector2 targetPos);
-    public abstract Vector2 GetPositionOfTroop(int index);
+
+    public virtual Vector2 GetPositionOfTroop(int index)
+    {
+        return index < Slots.Count ? Slots[index] : Vector2.zero;
+    }
 }

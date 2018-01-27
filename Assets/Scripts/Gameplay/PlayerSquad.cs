@@ -39,6 +39,18 @@ public class PlayerSquad : MonoBehaviour
         }
 	}
 
+    public Vector2 GetSquadTarget()
+    {
+        if (Target != null)
+        {
+            return Target.Position;
+        }
+        else
+        {
+            return Vector2.zero;
+        }
+    }
+
     private void ClearExistingData()
     {
         if (Troops != null && Formation != null && Target != null)

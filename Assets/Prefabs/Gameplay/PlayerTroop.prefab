@@ -568,7 +568,6 @@ MonoBehaviour:
   currentTarget: {x: 0, y: 0}
   currentAttackTarget: {x: 0, y: 0}
   CurrentState: 0
-  Attacking: 0
   CurrentDirection: 0
   CurrentAttackDirection: 0
 --- !u!114 &114455326309251588
@@ -582,7 +581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b060d58fee1123a47b8acd595df7064d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionSurce: {fileID: 1399425300036356}
+  positionSurce: {fileID: 1929037839445520}
   spriteRenderers:
   - {fileID: 212806505317636050}
   - {fileID: 212445345697727364}

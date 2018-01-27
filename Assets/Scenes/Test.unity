@@ -282,6 +282,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114401508462248706, guid: 439011aa296c8a646882f91354046073,
+        type: 2}
+      propertyPath: SupplyBar
+      value: 
+      objectReference: {fileID: 1826299269}
     - target: {fileID: 114465200629766838, guid: 439011aa296c8a646882f91354046073,
         type: 2}
       propertyPath: IngameHUD
@@ -292,11 +297,6 @@ Prefab:
       propertyPath: SquadDisplay
       value: 
       objectReference: {fileID: 376596988}
-    - target: {fileID: 114401508462248706, guid: 439011aa296c8a646882f91354046073,
-        type: 2}
-      propertyPath: SupplyBar
-      value: 
-      objectReference: {fileID: 1826299269}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 439011aa296c8a646882f91354046073, type: 2}
   m_IsPrefabParent: 0

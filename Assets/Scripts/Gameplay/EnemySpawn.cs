@@ -52,7 +52,8 @@ public class EnemySpawn : MonoBehaviour
         for (int i = 0; i < enemiesPerWave; i++)
         {
             Transform trans = Instantiate<Transform>(enemyPrefab, transform.position, transform.rotation, transform);
-            spawnedEnemies.Add(new EnemyCreature(trans.gameObject, Formation.GetPositionOfTroop(i, transform.position)));
+            spawnedEnemies.Add(new EnemyCreature(trans.gameObject, Formation.GetPositionOfTroop(i, transform.position),
+                                                 SettingsService.GameSettings.WeakZombi));
         }
         if(EnemiesManager.Instance != null)
         {

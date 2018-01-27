@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class HordeFormation : BaseSquadFormation
 {
-    private float distanceBetweenTroops = 0.3f;
+    private float distanceBetweenTroops {get { return SettingsService.GameSettings.HordeFormation_distanceBetweenTroops; } }
+    private float groupSpreadingFactor { get { return SettingsService.GameSettings.HordeFormation_speadingFactor; } }
+
 
     private int troopsCount;
 
@@ -17,7 +19,7 @@ public class HordeFormation : BaseSquadFormation
     public override void CalculatePosition(Vector2 targetPos)
     {
         Slots.Clear();
-        float hordeRange = distanceBetweenTroops * troopsCount * 0.1f;
+        float hordeRange = distanceBetweenTroops * troopsCount * groupSpreadingFactor;
         for (int i = 0; i < troopsCount; i++)
         {
             float xOffset = Random.Range(0, hordeRange);

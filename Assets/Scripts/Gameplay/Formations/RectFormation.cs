@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RectFormation : BaseSquadFormation
 {
-    private float distanceBetweenTroops = 0.5f;
+    private float distanceBetweenTroops { get { return SettingsService.GameSettings.RectFormation_distanceBetweenTroops; } }
 
     private int troopsCount;
     private int numberOfColumns;

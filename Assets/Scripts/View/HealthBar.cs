@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
-    private float healthBarVisibilityTime = 2.0f;
+    private float healthBarVisibilityTime { get { return SettingsService.GameSettings.healthBarVisibilityTime; } }
 
     [SerializeField]
     private Transform Fill;

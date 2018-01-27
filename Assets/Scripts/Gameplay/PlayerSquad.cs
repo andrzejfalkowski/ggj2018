@@ -138,7 +138,8 @@ public class PlayerSquad : MonoBehaviour
         for (int i = 0; i < troopsCount; i++)
         {
             Transform trans = Instantiate<Transform>(troopPrefab, transform.position, troopPrefab.rotation, transform);
-            Troops.Add(new PlayerTroop(trans.gameObject, i, Formation.GetPositionOfTroop(i, transform.position)));
+            Troops.Add(new PlayerTroop(trans.gameObject, i, Formation.GetPositionOfTroop(i, transform.position),
+                                       SettingsService.GameSettings.Player));
         }
     }
 

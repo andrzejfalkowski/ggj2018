@@ -26,6 +26,7 @@ public class PlayerTroop : BaseBeing
         navAgent = GameObject.GetComponent<NavMeshAgent>();
         navAgent.destination = Position;
         animation.SetMoveTarget(Position);
+        animation.Init(this);
         Speed = new SpeedComponent(navAgent);
     }
 
@@ -36,6 +37,8 @@ public class PlayerTroop : BaseBeing
             navAgent.SetDestination(target);
             animation.SetMoveTarget(target);
         }
+
+        SupplyManager.Instance.UpdateLastMovePoint(target);
     }
 
     public override bool IsAlive()

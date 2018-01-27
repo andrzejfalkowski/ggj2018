@@ -8,6 +8,11 @@ public class AnimatedCharacter : MonoBehaviour
     private float idleTreshold = 0.01f;
 
     [SerializeField]
+    private bool separateMoveAndAttackDirection = false;
+    [SerializeField]
+    private Transform separateAttackParent = null;
+
+    [SerializeField]
     private Animator animator;
     [SerializeField]
     private Animator attackAnimator;
@@ -17,7 +22,10 @@ public class AnimatedCharacter : MonoBehaviour
     [SerializeField]
     private bool overrideAnimation = false;
 
+    [SerializeField]
     private Vector2 currentTarget = Vector2.zero;
+    [SerializeField]
+    private Vector2 currentAttackTarget = Vector2.zero;
     private float defaultXScale = 1f;
 
     public EState CurrentState = EState.IDLE;
@@ -30,6 +38,7 @@ public class AnimatedCharacter : MonoBehaviour
     public bool Attacking = false;
 
     public EDirection CurrentDirection = EDirection.LEFT;
+    public EDirection CurrentAttackDirection = EDirection.LEFT;
     public enum EDirection
     {
         LEFT,
@@ -58,7 +67,7 @@ public class AnimatedCharacter : MonoBehaviour
     {
         if (!overrideAnimation)
         {
-            if (Mathf.Abs(((Vector2)transform.parent.localPosition - currentTarget).sqrMagnitude) < idleTreshold)
+            if (Mathf.Abs(((Vector2)transform.parent.position - currentTarget).sqrMagnitude) < idleTreshold)
             {
                 CurrentState = EState.IDLE;
             }
@@ -67,13 +76,31 @@ public class AnimatedCharacter : MonoBehaviour
                 CurrentState = EState.MOVE;
             }
 
-            if (transform.parent.localPosition.x < currentTarget.x)
+            if (transform.position.x < currentTarget.x)
             {
                 CurrentDirection = EDirection.LEFT;
             }
             else
             {
                 CurrentDirection = EDirection.RIGHT;
+            }
+
+            if (separateMoveAndAttackDirection)
+            {
+                if (transform.position.x < currentAttackTarget.x)
+                {
+                    CurrentAttackDirection = EDirection.LEFT;
+                }
+                else
+                {
+                    CurrentAttackDirection = EDirection.RIGHT;
+                }
+
+                if (separateAttackParent != null)
+                {
+                    separateAttackParent.localScale = 
+                        new Vector3(CurrentDirection == CurrentAttackDirection ? 1f : -1f, separateAttackParent.localScale.y, 1f);
+                }
             }
         }
 
@@ -83,12 +110,13 @@ public class AnimatedCharacter : MonoBehaviour
             new Vector3(CurrentDirection == EDirection.RIGHT ? -defaultXScale : defaultXScale, animator.gameObject.transform.localScale.y, 1f);
 	}
 
-    public void AnimateAttack()
+    public void AnimateAttack(Vector2 target)
     {
         if (attackAnimator != null)
         {
             attackAnimator.Play("attack");
         }
+        currentAttackTarget = target;
     }
 
     private void LateUpdate()

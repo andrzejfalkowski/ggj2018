@@ -8,8 +8,11 @@ public class HealthComponent
     public float MaxHealth;
     public float CurrentHealth;
 
-    public HealthComponent(float _maxHealth, BloodParticles _particles, HealthBar _barView = null)
+    public GameObject Owner;
+
+    public HealthComponent(GameObject _owner, float _maxHealth, BloodParticles _particles, HealthBar _barView = null)
     {
+        Owner = _owner;
         MaxHealth = CurrentHealth = _maxHealth;
         particles = _particles;
         barView = _barView;

@@ -16,7 +16,7 @@ public class EnemyCreature : BaseBeing
     public EnemyCreature(GameObject _go, Vector2 _position)
     {
         EnemyGO = _go;
-        Health = new HealthComponent(enemyTroopHealth, EnemyGO.GetComponentInChildren<BloodParticles>());
+        Health = new HealthComponent(_go, enemyTroopHealth, EnemyGO.GetComponentInChildren<BloodParticles>());
         Attack = new AttackComponent(enemyDamage, enemyRange, enemyCooldown, null);
         transform = EnemyGO.transform;
         transform.localPosition = _position - (Vector2)transform.parent.position;

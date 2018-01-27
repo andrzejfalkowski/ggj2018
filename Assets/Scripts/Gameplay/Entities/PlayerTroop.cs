@@ -27,7 +27,7 @@ public class PlayerTroop : BaseBeing
         animation = TroopGO.GetComponentInChildren<AnimatedCharacter>();
         transform = TroopGO.transform;
         transform.localPosition = _position;
-        Health = new HealthComponent(playerTroopHealth, TroopGO.GetComponentInChildren<BloodParticles>(), 
+        Health = new HealthComponent(_go, playerTroopHealth, TroopGO.GetComponentInChildren<BloodParticles>(), 
                                      TroopGO.GetComponentInChildren<HealthBar>());
         Attack = new AttackComponent(playerDamage, playerRange, playerCooldown, animation);
         navAgent = TroopGO.GetComponent<NavMeshAgent>();

@@ -15,10 +15,9 @@ public class AttackComponent
         CooldownTime = _cooldownTime;
     }
 
-    public bool IsAttackPossible(Vector2 position, Vector2 target)
+    public bool IsAttackPossible()
     {
-        return Time.time - lastAttackTime >= CooldownTime && 
-               Vector2.Distance(position, target) <= Range;
+        return Time.time - lastAttackTime >= CooldownTime;
     }
 
     public void PerformAttack(HealthComponent target)

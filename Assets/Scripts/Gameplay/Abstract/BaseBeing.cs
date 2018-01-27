@@ -20,9 +20,6 @@ public abstract class BaseBeing
 
     public void PerformAttack(HealthComponent opponentHealth, Vector2 opponentPosition)
     {
-        if (Attack.IsAttackPossible(Position, opponentPosition))
-        {
-            Attack.PerformAttack(opponentHealth);
-        }
+        Attack.PerformAttack(opponentHealth);
     }
 }

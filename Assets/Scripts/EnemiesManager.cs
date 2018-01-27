@@ -38,12 +38,12 @@ public class EnemiesManager : MonoBehaviour
         EnemiesGroupList.Add(enemyGroup);
     }
 
-    public EnemyCreature GetNearestEnemy(Vector2 origin)
+    public EnemyCreature GetNearestEnemy(Vector2 origin, float range)
     {
         EnemyCreature enemy = null;
         for (int i = 0; i < EnemiesGroupList.Count; i++)
         {
-            enemy = EnemiesGroupList[i].GetNearestEnemy(enemy, origin);
+            enemy = EnemiesGroupList[i].GetNearestEnemy(enemy, origin, range);
         }
         return enemy;
     }

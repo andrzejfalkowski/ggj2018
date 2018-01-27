@@ -12,15 +12,15 @@ public class BloodParticles : MonoBehaviour
 
     private Transform linkedBeing;
 
-    private void Start()
-    {
-        linkedBeing = transform.parent;
-        transform.SetParent(GameManager.Instance.ParticlesParent);
-        transform.localScale = Vector3.one;
-    }
-
     public void Play(bool destroy)
     {
+        if(linkedBeing == null)
+        {
+            linkedBeing = transform.parent;
+            transform.SetParent(GameManager.Instance.ParticlesParent);
+            transform.localScale = Vector3.one;
+        }
+        //
         transform.position = linkedBeing.position + Vector3.back*0.5f;
         Particles.Emit(Random.Range(minParticlesInEmission, maxParticlesInEmission));
         if (destroy)

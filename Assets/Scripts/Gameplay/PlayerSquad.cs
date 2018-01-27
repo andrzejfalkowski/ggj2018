@@ -64,14 +64,15 @@ public class PlayerSquad : MonoBehaviour
         }
     }
 
-    public PlayerTroop GetNearestTroop(Vector2 origin)
+    public PlayerTroop GetNearestTroop(Vector2 origin, float range)
     {
         PlayerTroop nearestTroop = null;
         float distanceToClosest = float.MaxValue;
         for (int i = 0; i < Troops.Count; i++)
         {
             float distanceToCurrent = Vector3.Distance(Troops[i].Position, origin);
-            if (distanceToCurrent < distanceToClosest)
+            if (distanceToCurrent < distanceToClosest &&
+                distanceToCurrent < range)
             {
                 nearestTroop = Troops[i];
                 distanceToClosest = distanceToCurrent;
@@ -93,9 +94,10 @@ public class PlayerSquad : MonoBehaviour
 
     private void PerformAttack(PlayerTroop playerTroop)
     {
-        if (EnemiesManager.Instance != null)
+        if (EnemiesManager.Instance != null && playerTroop.Attack.IsAttackPossible())
         {
-            EnemyCreature enemy = EnemiesManager.Instance.GetNearestEnemy(playerTroop.TroopGO.transform.position);
+            EnemyCreature enemy = EnemiesManager.Instance.GetNearestEnemy(playerTroop.TroopGO.transform.position,
+                                                                          playerTroop.Attack.Range);
             if(enemy != null)
             {
                 playerTroop.PerformAttack(enemy.Health, enemy.Position);

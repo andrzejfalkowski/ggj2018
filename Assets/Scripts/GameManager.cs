@@ -72,9 +72,9 @@ public class GameManager : MonoBehaviour
         return playerSquad.GetSquadTarget();
     }
 
-    public PlayerTroop GetNearestPlayerTroop(Vector2 origin)
+    public PlayerTroop GetNearestPlayerTroop(Vector2 origin, float range)
     {
-        return playerSquad.GetNearestTroop(origin);
+        return playerSquad.GetNearestTroop(origin, range);
     }
 
     public void GameOver()

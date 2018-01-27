@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4011894676697994}
   - component: {fileID: 114776732561643666}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 136762704282910616}
   - component: {fileID: 23142487860290482}
   - component: {fileID: 195309950046153360}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerTroop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 212833710433026240}
   - component: {fileID: 95938021518927798}
   - component: {fileID: 114426497843724128}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4959252245429170}
   - component: {fileID: 212510874795234330}
   - component: {fileID: 114881661536055842}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4011511049731394}
   - component: {fileID: 114208109206368028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Troop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4166117217092612}
   - component: {fileID: 212906987083596948}
   - component: {fileID: 114627609164111532}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 198604872068178348}
   - component: {fileID: 199779061874993220}
   - component: {fileID: 114398055791399024}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HumanBlood
   m_TagString: Untagged
   m_Icon: {fileID: 0}

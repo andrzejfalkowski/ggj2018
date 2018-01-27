@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 136507563254669978}
   - component: {fileID: 23432034581239772}
   - component: {fileID: 195474655414831940}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyCreature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 198775191541783802}
   - component: {fileID: 199025730999798280}
   - component: {fileID: 114873430918764130}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZombiBlood
   m_TagString: Untagged
   m_Icon: {fileID: 0}

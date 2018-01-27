@@ -803,7 +803,7 @@ GameObject:
   - component: {fileID: 890417188}
   - component: {fileID: 890417187}
   - component: {fileID: 890417186}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1586,7 +1586,7 @@ GameObject:
   - component: {fileID: 1700468129}
   - component: {fileID: 1700468128}
   - component: {fileID: 1700468127}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1686,7 +1686,7 @@ GameObject:
   - component: {fileID: 1774385879}
   - component: {fileID: 1774385878}
   - component: {fileID: 1774385877}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

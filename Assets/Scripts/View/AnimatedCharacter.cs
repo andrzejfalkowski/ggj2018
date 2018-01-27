@@ -116,6 +116,10 @@ public class AnimatedCharacter : MonoBehaviour
         {
             attackAnimator.Play("attack");
         }
+        else
+        {
+            animator.Play("attack");
+        }
         currentAttackTarget = target;
     }
 

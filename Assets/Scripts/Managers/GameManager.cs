@@ -75,6 +75,16 @@ public class GameManager : MonoBehaviour
         return playerSquad.GetSquadTarget();
     }
 
+    public void DoubleDamage()
+    {
+        playerSquad.DoubleDamage();
+    }
+
+    public void CureAll()
+    {
+        playerSquad.CureAll();
+    }
+
     public PlayerTroop GetNearestPlayerTroop(Vector2 origin, float range)
     {
         return playerSquad.GetNearestTroop(origin, range);
@@ -83,6 +93,11 @@ public class GameManager : MonoBehaviour
     public void ShowInfectedTroop(int troopIndex)
     {
         SquadDisplay.ShowInfectedTroop(troopIndex);
+    }
+
+    public void HideInfectedTroop(int troopIndex)
+    {
+        SquadDisplay.HideInfectedTroop(troopIndex);
     }
 
     public void KillTroopWithInfection(int troopIndex)

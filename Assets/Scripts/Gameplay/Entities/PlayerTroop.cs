@@ -46,4 +46,14 @@ public class PlayerTroop : BaseBeing
     {
         animation.ChangeSpriteColor(Color.red);
     }
+
+    public void ChangeColorToNormal()
+    {
+        animation.ChangeSpriteColor(Color.white);
+    }
+
+    public override void Update()
+    {
+        Attack.Update();
+    }
 }

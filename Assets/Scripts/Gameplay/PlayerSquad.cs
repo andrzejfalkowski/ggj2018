@@ -109,6 +109,37 @@ public class PlayerSquad : MonoBehaviour
         }
     }
 
+    public void DoubleDamage()
+    {
+        if (Troops != null)
+        {
+            for (int i = 0; i < Troops.Count; i++)
+            {
+                if (!Troops[i].IsDead)
+                {
+                    Troops[i].Attack.DoubleDamage();
+                }
+            }
+        }
+    }
+
+    public void CureAll()
+    {
+        if (Troops != null)
+        {
+            for (int i = 0; i < Troops.Count; i++)
+            {
+                if (!Troops[i].IsDead && Troops[i].IsInfected)
+                {
+                    Troops[i].Health.Cure();
+                    Troops[i].IsInfected = false;
+                    GameManager.Instance.HideInfectedTroop(Troops[i].Index);
+                    Troops[i].ChangeColorToNormal();
+                }
+            }
+        }
+    }
+
     private void ClearExistingData()
     {
         if (Troops != null)

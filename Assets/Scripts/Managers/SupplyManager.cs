@@ -112,6 +112,12 @@ public class SupplyManager : MonoBehaviour
         // TODO: handle supply logic
         switch(supply.SupplyType)
         {
+            case BaseSupplyDefinition.ESupplyType.WEAPONZ:
+                GameManager.Instance.DoubleDamage();
+                break;
+            case BaseSupplyDefinition.ESupplyType.HEALZ:
+                GameManager.Instance.CureAll();
+                break;
             default:
                 break;
         }

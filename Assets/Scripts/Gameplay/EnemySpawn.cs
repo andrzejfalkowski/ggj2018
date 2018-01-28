@@ -25,5 +25,6 @@ public class EnemySpawn : MonoBehaviour
         {
             EnemiesManager.Instance.AddEnemyGroup(new EnemiesGroup(spawnedEnemies, transform.position));
         }
+        SoundManager.Instance.HordeSpawn();
     }
 }

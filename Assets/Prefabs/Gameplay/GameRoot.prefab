@@ -21607,6 +21607,7 @@ MonoBehaviour:
   doubleDamage: {fileID: 8300000, guid: c62046d904f1d0c43adf59008d8b6f3c, type: 3}
   meds: {fileID: 8300000, guid: 7f71f1c8981480649ad91699ef0e20f3, type: 3}
   beacon: {fileID: 8300000, guid: 2c1649b779763874bb288372d9944414, type: 3}
+  hordeSpawn: {fileID: 8300000, guid: 81556aca3de68114ea2c9cc18b08fd76, type: 3}
   dyingZombies:
   - {fileID: 8300000, guid: 4129a389fd7353d4b8f8d736ab74bf43, type: 3}
   - {fileID: 8300000, guid: b8bd87dad34fe4d4db872890597ab981, type: 3}

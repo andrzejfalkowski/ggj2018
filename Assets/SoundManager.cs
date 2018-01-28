@@ -42,6 +42,9 @@ public class SoundManager : MonoBehaviour
     private AudioClip beacon;
 
     [SerializeField]
+    private AudioClip hordeSpawn;
+
+    [SerializeField]
     private List<AudioClip> dyingZombies;
 
     [SerializeField]
@@ -117,6 +120,11 @@ public class SoundManager : MonoBehaviour
     public void Beacon()
     {
         PlayAt(beacon);
+    }
+
+    public void HordeSpawn()
+    {
+        PlayAt(hordeSpawn);
     }
 
     public void Play(int index)

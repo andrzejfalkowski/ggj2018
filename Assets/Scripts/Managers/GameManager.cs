@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
             case EGameState.GAME_STARTING:
                 InitializeGame();
                 CurrentGameState = EGameState.GAME_IN_PROGRESS;
-                SoundManager.Instance.Intro();
+                //SoundManager.Instance.Intro();
                 break;
 			case EGameState.GAME_IN_PROGRESS:
                 timeCounter += Time.deltaTime;

@@ -513,6 +513,63 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 744790067}
+--- !u!1001 &876372979
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114401508462248706, guid: 439011aa296c8a646882f91354046073,
+        type: 2}
+      propertyPath: SupplyBar
+      value: 
+      objectReference: {fileID: 1826299269}
+    - target: {fileID: 114465200629766838, guid: 439011aa296c8a646882f91354046073,
+        type: 2}
+      propertyPath: IngameHUD
+      value: 
+      objectReference: {fileID: 744790069}
+    - target: {fileID: 114465200629766838, guid: 439011aa296c8a646882f91354046073,
+        type: 2}
+      propertyPath: SquadDisplay
+      value: 
+      objectReference: {fileID: 376596988}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 439011aa296c8a646882f91354046073, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &937200144
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,63 +921,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 5, y: -5}
   m_UseGraphicAlpha: 1
---- !u!1001 &1783436341
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208212382729194, guid: 439011aa296c8a646882f91354046073, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114401508462248706, guid: 439011aa296c8a646882f91354046073,
-        type: 2}
-      propertyPath: SupplyBar
-      value: 
-      objectReference: {fileID: 1826299269}
-    - target: {fileID: 114465200629766838, guid: 439011aa296c8a646882f91354046073,
-        type: 2}
-      propertyPath: IngameHUD
-      value: 
-      objectReference: {fileID: 744790069}
-    - target: {fileID: 114465200629766838, guid: 439011aa296c8a646882f91354046073,
-        type: 2}
-      propertyPath: SquadDisplay
-      value: 
-      objectReference: {fileID: 376596988}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 439011aa296c8a646882f91354046073, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1826299266
 GameObject:
   m_ObjectHideFlags: 0

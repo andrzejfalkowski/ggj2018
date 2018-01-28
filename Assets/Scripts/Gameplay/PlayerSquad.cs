@@ -19,6 +19,7 @@ public class PlayerSquad : MonoBehaviour
             int prevTroopsCount = Troops.Count;
             for (int i = 0; i < Troops.Count; i++)
             {
+                Troops[i].Update();
                 PerformAttack(Troops[i]);
                 UpdateInfectionState(Troops[i]);
                 if(!Troops[i].IsAlive())

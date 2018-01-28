@@ -32,6 +32,18 @@ public class AnimatedCharacter : MonoBehaviour
     private Vector2 currentAttackTarget = Vector2.zero;
     private float defaultXScale = 1f;
 
+    [SerializeField]
+    private SpriteRenderer weaponRenderer;
+    [SerializeField]
+    private Sprite normalWeapon;
+    [SerializeField]
+    private Sprite superWeapon;
+
+    [SerializeField]
+    private SpriteRenderer headRenderer;
+    [SerializeField]
+    private List<Sprite> availableHeads;
+
     private Tweener frontArmTween = null;
 
     public EState CurrentState = EState.IDLE;
@@ -59,6 +71,10 @@ public class AnimatedCharacter : MonoBehaviour
     void Start()
     {
         defaultXScale = animator.gameObject.transform.localScale.x;
+        if (headRenderer != null)
+        {
+            headRenderer.sprite = availableHeads[UnityEngine.Random.Range(0, availableHeads.Count)];
+        }
     }
 
 	public void SetMoveTarget (Vector2 target) 
@@ -160,6 +176,22 @@ public class AnimatedCharacter : MonoBehaviour
             animator.Play("attack");
         }
         currentAttackTarget = target;
+    }
+
+    public void UseNormalWeapon()
+    {
+        if (weaponRenderer != null && normalWeapon != null)
+        {
+            weaponRenderer.sprite = normalWeapon;
+        }
+    }
+
+    public void UseSuperWeapon()
+    {
+        if (weaponRenderer != null && superWeapon != null)
+        {
+            weaponRenderer.sprite = superWeapon;
+        }
     }
 
     private void LateUpdate()

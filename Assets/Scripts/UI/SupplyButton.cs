@@ -23,9 +23,9 @@ public class SupplyButton : MonoBehaviour
             text.text = definition.Title;
         }
 
-        if (text != null)
+        if (image != null)
         {
-            text.text = definition.Title;
+            image.sprite = definition.Icon;
         }
     }
 

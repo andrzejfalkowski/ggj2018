@@ -45,7 +45,8 @@ public class AnimatedCharacter : MonoBehaviour
     private List<Sprite> availableHeads;
 
     private Tweener frontArmTween = null;
-
+    private bool anyTargetEver = false;
+    private float targetCooldown = 0f;
     public EState CurrentState = EState.IDLE;
     public enum EState
     {
@@ -114,15 +115,21 @@ public class AnimatedCharacter : MonoBehaviour
 
             if (separateMoveAndAttackDirection)
             {
-                if (transform.position.x < currentAttackTarget.x)
+                if (!anyTargetEver)
                 {
-                    CurrentAttackDirection = EDirection.LEFT;
+                    CurrentAttackDirection = CurrentDirection;
                 }
                 else
                 {
-                    CurrentAttackDirection = EDirection.RIGHT;
+                    if (transform.position.x < currentAttackTarget.x)
+                    {
+                        CurrentAttackDirection = EDirection.LEFT;
+                    }
+                    else
+                    {
+                        CurrentAttackDirection = EDirection.RIGHT;
+                    }
                 }
-
                 if (separateAttackParent != null)
                 {
                     separateAttackParent.localScale = 
@@ -135,6 +142,15 @@ public class AnimatedCharacter : MonoBehaviour
 
         animator.gameObject.transform.localScale = 
             new Vector3(CurrentDirection == EDirection.RIGHT ? -defaultXScale : defaultXScale, animator.gameObject.transform.localScale.y, 1f);
+
+        if (anyTargetEver)
+        {
+            targetCooldown -= Time.deltaTime;
+            if (targetCooldown < 0f)
+            {
+                anyTargetEver = false;
+            }
+        }
 	}
 
     private void SetupFrontArmDirection()
@@ -176,6 +192,8 @@ public class AnimatedCharacter : MonoBehaviour
             animator.Play("attack");
         }
         currentAttackTarget = target;
+        anyTargetEver = true;
+        targetCooldown = 1f;
     }
 
     public void UseNormalWeapon()

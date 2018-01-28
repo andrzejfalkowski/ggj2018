@@ -114,9 +114,11 @@ public class SupplyManager : MonoBehaviour
         {
             case BaseSupplyDefinition.ESupplyType.WEAPONZ:
                 GameManager.Instance.DoubleDamage();
+                SoundManager.Instance.DoubleDamage();
                 break;
             case BaseSupplyDefinition.ESupplyType.HEALZ:
                 GameManager.Instance.CureAll();
+                SoundManager.Instance.Meds();
                 break;
             case BaseSupplyDefinition.ESupplyType.DEATH_FROM_ABOVE:
                 SoundManager.Instance.Beacon();

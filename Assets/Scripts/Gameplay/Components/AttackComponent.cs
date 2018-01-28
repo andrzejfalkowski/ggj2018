@@ -58,9 +58,7 @@ public class AttackComponent
         if (animation != null)
         {
             animation.UseSuperWeapon();
-        }
-
-        SoundManager.Instance.DoubleDamage();
+        }            
     }
 
     public void Update()

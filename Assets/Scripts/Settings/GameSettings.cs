@@ -9,6 +9,9 @@ public class GameSettings : ScriptableObject
     public EnemyProperties WeakZombi;
     public PlayerProperties Player;
 
+    [Header("Powerups")]
+    public float doubleDamageCooldown = 10;
+
     [Header("Infection")]
     public float InfectionCooldown = 5;
 

@@ -21,7 +21,7 @@ public class SpeedComponent
 
     public void Update()
     {
-        if (staggered)
+        if (staggered && agent != null)
         {
             staggerCooldown -= Time.deltaTime;
             agent.speed = Mathf.Lerp(lastStaggeredSpeed, defaultSpeed, (0.5f - staggerCooldown)*2);

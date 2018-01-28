@@ -11,7 +11,7 @@ public class IngameHUD : MonoBehaviour
 
     public void OnRestartPressed()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Test");
     }
 
     public void Show(float elapsedTime)

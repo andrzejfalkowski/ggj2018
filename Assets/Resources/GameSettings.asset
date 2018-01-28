@@ -13,16 +13,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeakZombi:
     enemyTroopHealth: 100
-    enemyDamage: 5
+    enemyDamage: 2.5
     enemyRange: 0.5
     enemyCooldown: 0.2
-    enemyScoreValue: 1
+    enemyScoreValue: 0.15
+    enemySpeed: 7
   Player:
-    playerTroopHealth: 100
-    playerDamage: 20
+    playerTroopHealth: 75
+    playerDamage: 15
     playerRange: 4
     playerCooldown: 0.1
-  InfectionCooldown: 5
+    playerSpeed: 3.5
+  doubleDamageCooldown: 10
+  InfectionCooldown: 15
   RectFormation_distanceBetweenTroops: 0.5
   HordeFormation_distanceBetweenTroops: 0.3
   HordeFormation_speadingFactor: 0.25
@@ -34,12 +37,12 @@ MonoBehaviour:
   playerTroops: 20
   maxNumberOfEnemies: 400
   spawningEmissionRate: 4
-  minEnemiesFromSpawnerPerWave: 10
-  maxEnemiesFromSpawnerPerWave: 35
+  minEnemiesFromSpawnerPerWave: 15
+  maxEnemiesFromSpawnerPerWave: 30
   enemiesIncreamentPerWave: 2
-  minSpawnersInWave: 2
-  maxSpawnersInWave: 14
+  minSpawnersInWave: 4
+  maxSpawnersInWave: 10
   spawnersIncreamentPerWave: 1
   maxEnemiesWavePeriodInS: 15
-  minEnemiesWavePeriodInS: 7
+  minEnemiesWavePeriodInS: 10
   periodDecreamentPerWave: 0.4

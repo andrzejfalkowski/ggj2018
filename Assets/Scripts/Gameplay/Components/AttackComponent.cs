@@ -53,7 +53,7 @@ public class AttackComponent
     {
         Damage = 2f * defaultDamage;
         doubleDamage = true;
-        doubleDamageCooldown = 5f;
+        doubleDamageCooldown = SettingsService.GameSettings.doubleDamageCooldown;
 
         if (animation != null)
         {

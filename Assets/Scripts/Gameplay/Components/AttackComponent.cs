@@ -42,6 +42,11 @@ public class AttackComponent
         Damage = 2f * defaultDamage;
         doubleDamage = true;
         doubleDamageCooldown = 5f;
+
+        if (animation != null)
+        {
+            animation.UseSuperWeapon();
+        }
     }
 
     public void Update()
@@ -54,6 +59,11 @@ public class AttackComponent
             {
                 doubleDamage = false;
                 Damage = defaultDamage;
+
+                if (animation != null)
+                {
+                    animation.UseNormalWeapon();
+                }
             }
         }
     }

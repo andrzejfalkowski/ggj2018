@@ -32,6 +32,13 @@ public class AnimatedCharacter : MonoBehaviour
     private Vector2 currentAttackTarget = Vector2.zero;
     private float defaultXScale = 1f;
 
+    [SerializeField]
+    private SpriteRenderer weaponRenderer;
+    [SerializeField]
+    private Sprite normalWeapon;
+    [SerializeField]
+    private Sprite superWeapon;
+
     private Tweener frontArmTween = null;
 
     public EState CurrentState = EState.IDLE;
@@ -160,6 +167,22 @@ public class AnimatedCharacter : MonoBehaviour
             animator.Play("attack");
         }
         currentAttackTarget = target;
+    }
+
+    public void UseNormalWeapon()
+    {
+        if (weaponRenderer != null && normalWeapon != null)
+        {
+            weaponRenderer.sprite = normalWeapon;
+        }
+    }
+
+    public void UseSuperWeapon()
+    {
+        if (weaponRenderer != null && superWeapon != null)
+        {
+            weaponRenderer.sprite = superWeapon;
+        }
     }
 
     private void LateUpdate()

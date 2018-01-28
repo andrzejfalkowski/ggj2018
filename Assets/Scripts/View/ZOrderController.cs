@@ -6,7 +6,7 @@ using System.Linq;
 public class ZOrderController : MonoBehaviour 
 {
     public const float GRANULARITY = 100f;
-
+    public const float X_GRANULARITY = 10f;
     [SerializeField]
     private GameObject positionSurce = null;
 
@@ -53,7 +53,9 @@ public class ZOrderController : MonoBehaviour
 
     void RefreshZ()
     {
-        int order = (int)Mathf.Clamp(GRANULARITY * -positionSurce.transform.position.y + GRANULARITY * zShift, 
+        int order = (int)Mathf.Clamp(GRANULARITY * -positionSurce.transform.position.y + 
+            X_GRANULARITY * positionSurce.transform.position.x +
+            GRANULARITY * zShift, 
             short.MinValue, short.MaxValue);
         for (int i = 0; i < spriteRenderers.Count; i++)
         {

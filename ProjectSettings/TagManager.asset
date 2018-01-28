@@ -13,9 +13,9 @@ TagManager:
   - UI
   - 
   - 
-  - Hittable
+  - Player
   - Blockers
-  - 
+  - Zombies
   - 
   - 
   - 

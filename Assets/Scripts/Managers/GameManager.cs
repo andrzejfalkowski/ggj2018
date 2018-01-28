@@ -46,9 +46,10 @@ public class GameManager : MonoBehaviour
 	{
 		switch(CurrentGameState)
 		{
-			case EGameState.GAME_STARTING:
+            case EGameState.GAME_STARTING:
                 InitializeGame();
                 CurrentGameState = EGameState.GAME_IN_PROGRESS;
+                SoundManager.Instance.Intro();
                 break;
 			case EGameState.GAME_IN_PROGRESS:
                 timeCounter += Time.deltaTime;
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour
 
     public void CureAll()
     {
+        SoundManager.Instance.Meds();
         playerSquad.CureAll();
     }
 

@@ -27,6 +27,7 @@ public class PlayerSquad : MonoBehaviour
                     Destroy(Troops[i].GameObject);
                     Troops.RemoveAt(i);
                     i--;
+                    SoundManager.Instance.SoldierDie();
                 }
             }
             CheckTroopsState(prevTroopsCount);
@@ -231,6 +232,7 @@ public class PlayerSquad : MonoBehaviour
             playerTroop.IsInfected = true;
             GameManager.Instance.ShowInfectedTroop(playerTroop.Index);
             playerTroop.ChangeColorToInfected();
+            SoundManager.Instance.SoldierInfected();
         }
     }
 }

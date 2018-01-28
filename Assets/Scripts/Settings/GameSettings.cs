@@ -19,6 +19,7 @@ public class GameSettings : ScriptableObject
 
     [Header("Navigation")]
     public float samplePositionRange = 3;
+    public float updateRateInSeconds = 1;
 
     [Header("Visual")]
     public float healthBarVisibilityTime = 2.0f;
@@ -27,6 +28,8 @@ public class GameSettings : ScriptableObject
 
     [Header("Spawners")]
     public int playerTroops = 20;
+    public int maxNumberOfEnemies = 400;
+    public int spawningEmissionRate = 4;
     [Space]
     public int minEnemiesFromSpawnerPerWave = 10;
     public int maxEnemiesFromSpawnerPerWave = 25;

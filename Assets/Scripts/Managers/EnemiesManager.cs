@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemiesManager : MonoBehaviour
 {
     public static EnemiesManager Instance = null;
-
-    [SerializeField]
-    private float updateRateInSeconds;
+    
+    [HideInInspector]
+    public float currentNumberOfEnemiesOnTheMap;
 
     private List<EnemiesGroup> EnemiesGroupList;
 
@@ -51,7 +51,7 @@ public class EnemiesManager : MonoBehaviour
     private void NavigateEnemies()
     {
         timer += Time.deltaTime;
-        if (timer > updateRateInSeconds)
+        if (timer > SettingsService.GameSettings.updateRateInSeconds)
         {
             timer = 0;
             Vector2 playerPos = GameManager.Instance.GetPlayerSquadPosition();
@@ -64,9 +64,16 @@ public class EnemiesManager : MonoBehaviour
 
     private void UpdateEnemiesState()
     {
+        currentNumberOfEnemiesOnTheMap = 0;
         for (int i = 0; i < EnemiesGroupList.Count; i++)
         {
             EnemiesGroupList[i].UpdateGroupState();
+            currentNumberOfEnemiesOnTheMap += EnemiesGroupList[i].GetEnemiesCount();
+            if (EnemiesGroupList[i].GetEnemiesCount() == 0)
+            {
+                EnemiesGroupList.RemoveAt(i);
+                i--;
+            }
         }
     }
 }

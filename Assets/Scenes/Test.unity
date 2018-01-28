@@ -721,7 +721,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nice try! You survived 100 seconds.
+  m_Text: You survived 100 seconds.
 --- !u!222 &1424527217
 CanvasRenderer:
   m_ObjectHideFlags: 0

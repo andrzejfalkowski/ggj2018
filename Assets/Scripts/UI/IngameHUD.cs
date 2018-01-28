@@ -16,7 +16,7 @@ public class IngameHUD : MonoBehaviour
 
     public void Show(float elapsedTime)
     {
-        Message.text = "Nice try! You survived: " + elapsedTime.ToString("N1") + " seconds.";
+        Message.text = "You survived " + elapsedTime.ToString("N1") + " seconds!";
         Result.SetActive(true);
     }
 }

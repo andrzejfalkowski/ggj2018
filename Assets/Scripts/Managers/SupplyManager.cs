@@ -118,6 +118,9 @@ public class SupplyManager : MonoBehaviour
             case BaseSupplyDefinition.ESupplyType.HEALZ:
                 GameManager.Instance.CureAll();
                 break;
+            case BaseSupplyDefinition.ESupplyType.DEATH_FROM_ABOVE:
+                SoundManager.Instance.Beacon();
+                break;
             default:
                 break;
         }
@@ -160,6 +163,8 @@ public class SupplyManager : MonoBehaviour
                     safety++;
                 }
                 go.transform.localPosition = spawnCandidate;
+
+                SoundManager.Instance.SupplyDelievered();
 
                 suppliesToDrop.RemoveAt(i);
                 i--;

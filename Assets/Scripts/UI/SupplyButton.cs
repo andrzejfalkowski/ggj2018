@@ -12,6 +12,8 @@ public class SupplyButton : MonoBehaviour
     [SerializeField]
     private Image image;
 
+    private bool active = false;
+
     private BaseSupplyDefinition supplyDefinition;
 
     public void Init(BaseSupplyDefinition definition)
@@ -32,6 +34,13 @@ public class SupplyButton : MonoBehaviour
     public void Refresh(float normalizedSupplyScore)
     {
         button.interactable = supplyDefinition != null && supplyDefinition.SupplyCost <= normalizedSupplyScore;
+
+        if (!active && button.interactable)
+        {
+            SoundManager.Instance.SupplyReady();
+        }
+
+        active = button.interactable;
     }
 
     public void TriggerSupplyDrop()

@@ -35,6 +35,18 @@ public class AttackComponent
         {
             animation.AnimateAttack((Vector2)target.Owner.GameObject.transform.position);
         }
+
+        if (animation.Owner as PlayerTroop != null)
+        {
+            if (doubleDamage)
+                SoundManager.Instance.SoldierHeavyShoot();
+            else
+                SoundManager.Instance.SoldierShoot();
+        }
+        else
+        {
+            SoundManager.Instance.ZombieBite();
+        }
     }
 
     public void DoubleDamage()
@@ -47,6 +59,8 @@ public class AttackComponent
         {
             animation.UseSuperWeapon();
         }
+
+        SoundManager.Instance.DoubleDamage();
     }
 
     public void Update()

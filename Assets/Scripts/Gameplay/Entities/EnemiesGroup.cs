@@ -28,6 +28,7 @@ public class EnemiesGroup
                 GameObject.Destroy(enemies[i].GameObject);
                 enemies.RemoveAt(i);
                 i--;
+                SoundManager.Instance.ZombieDie();
             }
         }
         CheckCreaturesState(prevEnemiesCount);

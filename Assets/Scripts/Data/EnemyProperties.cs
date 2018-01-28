@@ -8,4 +8,5 @@ public class EnemyProperties
     public float enemyRange = 0.5f;
     public float enemyCooldown = 0.2f;
     public float enemyScoreValue = 1f;
+    public float enemySpeed = 1f;
 }

@@ -17,7 +17,7 @@ public class EnemyCreature : BaseBeing
         Attack = new AttackComponent(properties.enemyDamage * UnityEngine.Random.Range(0.9f, 1.1f),
             // (1f - properties.enemyDamageVariation, 1f + properties.enemyDamageeVariation,)
             properties.enemyRange, properties.enemyCooldown, animation);
-        Speed = new SpeedComponent(1f * UnityEngine.Random.Range(0.9f, 1.1f), navAgent);
+        Speed = new SpeedComponent(properties.enemySpeed * UnityEngine.Random.Range(0.9f, 1.1f), navAgent);
         
     }
 

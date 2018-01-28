@@ -21,7 +21,7 @@ public class PlayerTroop : BaseBeing
         Attack = new AttackComponent(properties.playerDamage * UnityEngine.Random.Range(0.9f, 1.1f),
             // (1f - properties.playerDamageVariation, 1f + properties.playerDamageVariation,)
             properties.playerRange, properties.playerCooldown, animation);
-        Speed = new SpeedComponent(3.5f * UnityEngine.Random.Range(0.9f, 1.1f), navAgent);
+        Speed = new SpeedComponent(properties.playerSpeed * UnityEngine.Random.Range(0.9f, 1.1f), navAgent);
         animation.Init(this);
         animation.SetMoveTarget(Position);
     }

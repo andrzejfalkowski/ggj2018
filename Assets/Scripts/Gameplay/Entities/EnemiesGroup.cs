@@ -8,11 +8,13 @@ public class EnemiesGroup
     private List<EnemyCreature> enemies;
     private TargetComponent Target;
 
-    public EnemiesGroup(List<EnemyCreature> _enemies)
+    public EnemiesGroup(List<EnemyCreature> _enemies, Vector2 position)
     {
         enemies = _enemies;
         Target = new TargetComponent();
+        Target.Position = position;
         formation = new HordeFormation(enemies.Count);
+        formation.CalculatePosition(position);
     }
 
     public void UpdateGroupState()
@@ -36,7 +38,6 @@ public class EnemiesGroup
 
     public void SetTarget(Vector2 target)
     {
-        //TODO when enemy sees the solidier, should go directly to him instead going to the group target
         Target.Position = target;
         formation.CalculatePosition(target);
         for(int i = 0; i < enemies.Count; i++)
@@ -68,6 +69,11 @@ public class EnemiesGroup
             }
         }
         return returnedEnemy;
+    }
+
+    public int GetEnemiesCount()
+    {
+        return enemies.Count;
     }
 
     private void CheckCreaturesState(int prevEnemiesCount)

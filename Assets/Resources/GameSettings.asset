@@ -25,12 +25,15 @@ MonoBehaviour:
   InfectionCooldown: 5
   RectFormation_distanceBetweenTroops: 0.5
   HordeFormation_distanceBetweenTroops: 0.3
-  HordeFormation_speadingFactor: 0.1
+  HordeFormation_speadingFactor: 0.25
   samplePositionRange: 3
+  updateRateInSeconds: 1
   healthBarVisibilityTime: 2
   frontArmAnimLength: 0.1
   frontArmRestoreIdleLength: 0.5
   playerTroops: 20
+  maxNumberOfEnemies: 400
+  spawningEmissionRate: 4
   minEnemiesFromSpawnerPerWave: 10
   maxEnemiesFromSpawnerPerWave: 35
   enemiesIncreamentPerWave: 2

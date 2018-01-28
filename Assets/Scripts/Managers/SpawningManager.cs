@@ -40,7 +40,8 @@ public class SpawningManager : MonoBehaviour
         if(isInitialized)
         {
             timeCounter += Time.deltaTime;
-            if(timeCounter > periodBetweenNextWaves)
+            if(timeCounter > periodBetweenNextWaves &&
+               EnemiesManager.Instance.currentNumberOfEnemiesOnTheMap < gameSettings.maxNumberOfEnemies)
             {
                 SpawnEnemies();
             }
@@ -91,7 +92,7 @@ public class SpawningManager : MonoBehaviour
     {
         for (int i = 0; i < randomSpawners.Count; i++)
         {
-            randomSpawners[i].SpawnEnemies(enemiesInNextWave);
+            StartCoroutine(randomSpawners[i].SpawnEnemies(enemiesInNextWave));
         }
     }
 

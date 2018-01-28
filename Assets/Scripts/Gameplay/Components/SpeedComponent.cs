@@ -10,6 +10,7 @@ public class SpeedComponent
 
     private bool staggered = false;
     private float staggerCooldown = 0f;
+    private float lastStaggeredSpeed = 0;
 
     public SpeedComponent(float _speed, NavMeshAgent _agent)
     {
@@ -23,14 +24,11 @@ public class SpeedComponent
         if (staggered)
         {
             staggerCooldown -= Time.deltaTime;
-
-            if (staggerCooldown <= 0)
+            agent.speed = Mathf.Lerp(lastStaggeredSpeed, defaultSpeed, (0.5f - staggerCooldown)*2);
+            if(staggerCooldown <= 0)
             {
+                agent.speed = defaultSpeed;
                 staggered = false;
-                if (agent != null)
-                {
-                    agent.speed = defaultSpeed;
-                }
             }
         }
     }
@@ -42,7 +40,8 @@ public class SpeedComponent
 
         if (agent != null)
         {
-            agent.speed = 0f;//defaultSpeed / 2f;
+            agent.speed = Mathf.Clamp(agent.speed * 0.95f, defaultSpeed*0.35f, defaultSpeed);
+            lastStaggeredSpeed = agent.speed;
         }
     }
 }

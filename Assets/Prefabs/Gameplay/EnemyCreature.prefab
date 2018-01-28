@@ -395,6 +395,11 @@ MonoBehaviour:
   overrideAnimation: 0
   currentTarget: {x: 0, y: 0}
   currentAttackTarget: {x: 0, y: 0}
+  weaponRenderer: {fileID: 0}
+  normalWeapon: {fileID: 0}
+  superWeapon: {fileID: 0}
+  headRenderer: {fileID: 0}
+  availableHeads: []
   CurrentState: 0
   CurrentDirection: 0
   CurrentAttackDirection: 0
@@ -425,9 +430,9 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
+  m_AutoTraverseOffMeshLink: 0
+  m_AutoBraking: 0
+  m_AutoRepath: 0
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 16

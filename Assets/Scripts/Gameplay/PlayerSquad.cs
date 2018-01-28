@@ -65,6 +65,24 @@ public class PlayerSquad : MonoBehaviour
         }
     }
 
+    public Vector2 GetSquadPosition()
+    {
+        if(Troops != null && Troops.Count > 0)
+        {
+            Vector2 averagePos = Troops[0].Position;
+            for (int i = 1; i < Troops.Count; i++)
+            {
+                averagePos += Troops[i].Position;
+            }
+            averagePos /= Troops.Count;
+            return averagePos;
+        }
+        else
+        {
+            return GetSquadTarget();
+        }
+    }
+
     public PlayerTroop GetNearestTroop(Vector2 origin, float range)
     {
         PlayerTroop nearestTroop = null;

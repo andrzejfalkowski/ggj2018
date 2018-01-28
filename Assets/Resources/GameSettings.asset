@@ -35,7 +35,7 @@ MonoBehaviour:
   maxEnemiesFromSpawnerPerWave: 35
   enemiesIncreamentPerWave: 2
   minSpawnersInWave: 2
-  maxSpawnersInWave: 8
+  maxSpawnersInWave: 14
   spawnersIncreamentPerWave: 1
   maxEnemiesWavePeriodInS: 15
   minEnemiesWavePeriodInS: 7

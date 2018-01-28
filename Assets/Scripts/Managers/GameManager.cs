@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     public Vector2 GetPlayerSquadPosition()
     {
-        return playerSquad.GetSquadTarget();
+        return playerSquad.GetSquadPosition();
     }
 
     public void DoubleDamage()

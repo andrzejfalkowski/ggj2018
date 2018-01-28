@@ -106,7 +106,7 @@ public class SoundManager : MonoBehaviour
 
     public void DoubleDamage()
     {
-        PlayAt(doubleDamage, true, 0.5f);
+        PlayAt(doubleDamage);
     }
 
     public void Meds()
@@ -126,11 +126,6 @@ public class SoundManager : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
 		
 	}
 

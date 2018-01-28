@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour
 
     public void CureAll()
     {
-        SoundManager.Instance.Meds();
         playerSquad.CureAll();
     }
 

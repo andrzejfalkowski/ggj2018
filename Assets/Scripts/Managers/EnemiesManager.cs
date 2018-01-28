@@ -6,7 +6,6 @@ public class EnemiesManager : MonoBehaviour
 {
     public static EnemiesManager Instance = null;
     
-    [HideInInspector]
     public float currentNumberOfEnemiesOnTheMap;
 
     private List<EnemiesGroup> EnemiesGroupList;
@@ -36,6 +35,7 @@ public class EnemiesManager : MonoBehaviour
     public void AddEnemyGroup(EnemiesGroup enemyGroup)
     {
         EnemiesGroupList.Add(enemyGroup);
+        currentNumberOfEnemiesOnTheMap += enemyGroup.GetEnemiesCount();
     }
 
     public EnemyCreature GetNearestEnemy(Vector2 origin, float range)

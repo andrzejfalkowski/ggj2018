@@ -62,6 +62,8 @@ public class CameraController : MonoBehaviour
         else
         {
             Vector3 squadPos = GameManager.Instance.GetPlayerSquadPosition();
+            squadPos.x = Mathf.Clamp(squadPos.x, -21, 21);
+            squadPos.y = Mathf.Clamp(squadPos.y, -5, 5);
             squadPos.z = transform.position.z;
             MoveTo(squadPos);
         }

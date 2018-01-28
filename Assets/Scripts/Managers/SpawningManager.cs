@@ -92,7 +92,10 @@ public class SpawningManager : MonoBehaviour
     {
         for (int i = 0; i < randomSpawners.Count; i++)
         {
-            StartCoroutine(randomSpawners[i].SpawnEnemies(enemiesInNextWave));
+            if(EnemiesManager.Instance.currentNumberOfEnemiesOnTheMap < SettingsService.GameSettings.maxNumberOfEnemies)
+            {
+                randomSpawners[i].SpawnEnemies(enemiesInNextWave);
+            }
         }
     }
 

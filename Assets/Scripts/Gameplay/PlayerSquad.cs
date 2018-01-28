@@ -129,12 +129,15 @@ public class PlayerSquad : MonoBehaviour
         {
             for (int i = 0; i < Troops.Count; i++)
             {
-                if (!Troops[i].IsDead && Troops[i].IsInfected)
+                if (!Troops[i].IsDead)
                 {
                     Troops[i].Health.Cure();
-                    Troops[i].IsInfected = false;
-                    GameManager.Instance.HideInfectedTroop(Troops[i].Index);
-                    Troops[i].ChangeColorToNormal();
+                    if(Troops[i].IsInfected)
+                    {
+                        Troops[i].IsInfected = false;
+                        GameManager.Instance.HideInfectedTroop(Troops[i].Index);
+                        Troops[i].ChangeColorToNormal();
+                    }
                 }
             }
         }

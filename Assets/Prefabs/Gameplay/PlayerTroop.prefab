@@ -527,6 +527,12 @@ MonoBehaviour:
   weaponRenderer: {fileID: 212827611924250902}
   normalWeapon: {fileID: 21300000, guid: b77ceea67f610b149aa31ce714253631, type: 3}
   superWeapon: {fileID: 21300000, guid: 3faeab38b43f74844b18166997214658, type: 3}
+  headRenderer: {fileID: 212445345697727364}
+  availableHeads:
+  - {fileID: 21300000, guid: b9f0cf305e290f747bac97e1c0161df7, type: 3}
+  - {fileID: 21300000, guid: 65003cc9321cbb04eb21361875e27cba, type: 3}
+  - {fileID: 21300000, guid: 170aa861d4233bd4e9451cb3a97ff582, type: 3}
+  - {fileID: 21300000, guid: 5ed16f17d131d7a48baec2c322e4be86, type: 3}
   CurrentState: 0
   CurrentDirection: 0
   CurrentAttackDirection: 0
@@ -675,7 +681,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1279421368
+  randomSeed: -1139356484
   InitialModule:
     serializedVersion: 3
     enabled: 1

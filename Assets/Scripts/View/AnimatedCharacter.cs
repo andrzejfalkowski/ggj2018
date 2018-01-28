@@ -39,6 +39,11 @@ public class AnimatedCharacter : MonoBehaviour
     [SerializeField]
     private Sprite superWeapon;
 
+    [SerializeField]
+    private SpriteRenderer headRenderer;
+    [SerializeField]
+    private List<Sprite> availableHeads;
+
     private Tweener frontArmTween = null;
 
     public EState CurrentState = EState.IDLE;
@@ -66,6 +71,10 @@ public class AnimatedCharacter : MonoBehaviour
     void Start()
     {
         defaultXScale = animator.gameObject.transform.localScale.x;
+        if (headRenderer != null)
+        {
+            headRenderer.sprite = availableHeads[UnityEngine.Random.Range(0, availableHeads.Count)];
+        }
     }
 
 	public void SetMoveTarget (Vector2 target) 
